@@ -19,13 +19,13 @@
         This document obsoletes RFC 7540 and RFC 8740.
        
     " name="description">
-<meta content="xml2rfc 3.10.0" name="generator">
+<meta content="xml2rfc 3.11.1" name="generator">
 <meta content="HTTP" name="keyword">
 <meta content="SPDY" name="keyword">
 <meta content="Web" name="keyword">
 <meta content="draft-ietf-httpbis-http2bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.10.0
+  xml2rfc 3.11.1
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1052,11 +1052,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">HTTP/2</td>
-<td class="right">October 2021</td>
+<td class="right">November 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Thomson &amp; Benfield</td>
-<td class="center">Expires 29 April 2022</td>
+<td class="center">Expires 16 May 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,15 +1069,15 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-httpbis-http2bis-latest</dd>
 <dt class="label-obsoletes">Obsoletes:</dt>
 <dd class="obsoletes">
-<a href="https://datatracker.ietf.org/doc/html/rfc7540" class="eref">7540</a>, <a href="https://datatracker.ietf.org/doc/html/rfc8740" class="eref">8740</a> (if approved)</dd>
+<a href="https://www.rfc-editor.org/rfc/rfc7540" class="eref">7540</a>, <a href="https://www.rfc-editor.org/rfc/rfc8740" class="eref">8740</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-10-26" class="published">26 October 2021</time>
+<time datetime="2021-11-12" class="published">12 November 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-04-29">29 April 2022</time></dd>
+<dd class="expires"><time datetime="2022-05-16">16 May 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1136,7 +1136,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 April 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 16 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1154,9 +1154,9 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
             respect to this document. Code Components extracted from this
-            document must include Simplified BSD License text as described in
+            document must include Revised BSD License text as described in
             Section 4.e of the Trust Legal Provisions and are provided without
-            warranty as described in the Simplified BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -3352,8 +3352,11 @@ Setting {
                 frame as a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type
                 <a href="#PROTOCOL_ERROR" class="xref">PROTOCOL_ERROR</a>.<a href="#section-6.5.2-2.4.1" class="pilcrow">¶</a></p>
 <p id="section-6.5.2-2.4.2">
-                The initial value of SETTINGS_ENABLE_PUSH is 1, which indicates that server push is
-                permitted.  Any value other than 0 or 1 MUST be treated as a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type <a href="#PROTOCOL_ERROR" class="xref">PROTOCOL_ERROR</a>.<a href="#section-6.5.2-2.4.2" class="pilcrow">¶</a></p>
+                The initial value of SETTINGS_ENABLE_PUSH is 1.  For a client this value indicates that it
+                is willing to receive PUSH_PROMISE frames.  For a server this initial value has no effect, and
+                is equivalent to the value 0.  Any value other than 0 or 1 MUST be treated as a
+                <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type 
+                <a href="#PROTOCOL_ERROR" class="xref">PROTOCOL_ERROR</a>.<a href="#section-6.5.2-2.4.2" class="pilcrow">¶</a></p>
 <p id="section-6.5.2-2.4.3">
                 A server MUST NOT explicitly set this value to 1.  A server MAY choose to omit this
                 setting when it sends a SETTINGS frame, but if a server does include a value it MUST
@@ -5598,11 +5601,11 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="COMPRESSION">[COMPRESSION]</dt>
         <dd>
-<span class="refAuthor">Peon, R.</span> and <span class="refAuthor">H. Ruellan</span>, <span class="refTitle">"HPACK: Header Compression for HTTP/2"</span>, <span class="seriesInfo">RFC 7541</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7541">https://datatracker.ietf.org/doc/html/rfc7541</a>&gt;</span>. </dd>
+<span class="refAuthor">Peon, R.</span> and <span class="refAuthor">H. Ruellan</span>, <span class="refTitle">"HPACK: Header Compression for HTTP/2"</span>, <span class="seriesInfo">RFC 7541</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7541">https://www.rfc-editor.org/rfc/rfc7541</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="COOKIE">[COOKIE]</dt>
         <dd>
-<span class="refAuthor">Barth, A.</span>, <span class="refTitle">"HTTP State Management Mechanism"</span>, <span class="seriesInfo">RFC 6265</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6265">https://datatracker.ietf.org/doc/html/rfc6265</a>&gt;</span>. </dd>
+<span class="refAuthor">Barth, A.</span>, <span class="refTitle">"HTTP State Management Mechanism"</span>, <span class="seriesInfo">RFC 6265</span>, <time datetime="2011-04" class="refDate">April 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6265">https://www.rfc-editor.org/rfc/rfc6265</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="FIPS186">[FIPS186]</dt>
         <dd>
@@ -5618,43 +5621,43 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC3986">[RFC3986]</dt>
         <dd>
-<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a>&gt;</span>. </dd>
+<span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3986">https://www.rfc-editor.org/rfc/rfc3986</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8470">[RFC8470]</dt>
         <dd>
-<span class="refAuthor">Thomson, M.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">W. Tarreau</span>, <span class="refTitle">"Using Early Data in HTTP"</span>, <span class="seriesInfo">RFC 8470</span>, <span class="seriesInfo">DOI 10.17487/RFC8470</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8470">https://datatracker.ietf.org/doc/html/rfc8470</a>&gt;</span>. </dd>
+<span class="refAuthor">Thomson, M.</span>, <span class="refAuthor">Nottingham, M.</span>, and <span class="refAuthor">W. Tarreau</span>, <span class="refTitle">"Using Early Data in HTTP"</span>, <span class="seriesInfo">RFC 8470</span>, <span class="seriesInfo">DOI 10.17487/RFC8470</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8470">https://www.rfc-editor.org/rfc/rfc8470</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TCP">[TCP]</dt>
         <dd>
-<span class="refAuthor">Postel, J.</span>, <span class="refTitle">"Transmission Control Protocol"</span>, <span class="seriesInfo">STD 7</span>, <span class="seriesInfo">RFC 793</span>, <time datetime="1981-09" class="refDate">September 1981</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc793">https://datatracker.ietf.org/doc/html/rfc793</a>&gt;</span>. </dd>
+<span class="refAuthor">Postel, J.</span>, <span class="refTitle">"Transmission Control Protocol"</span>, <span class="seriesInfo">STD 7</span>, <span class="seriesInfo">RFC 793</span>, <time datetime="1981-09" class="refDate">September 1981</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc793">https://www.rfc-editor.org/rfc/rfc793</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS-ALPN">[TLS-ALPN]</dt>
         <dd>
-<span class="refAuthor">Friedl, S.</span>, <span class="refAuthor">Popov, A.</span>, <span class="refAuthor">Langley, A.</span>, and <span class="refAuthor">E. Stephan</span>, <span class="refTitle">"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension"</span>, <span class="seriesInfo">RFC 7301</span>, <time datetime="2014-07" class="refDate">July 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7301">https://datatracker.ietf.org/doc/html/rfc7301</a>&gt;</span>. </dd>
+<span class="refAuthor">Friedl, S.</span>, <span class="refAuthor">Popov, A.</span>, <span class="refAuthor">Langley, A.</span>, and <span class="refAuthor">E. Stephan</span>, <span class="refTitle">"Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension"</span>, <span class="seriesInfo">RFC 7301</span>, <time datetime="2014-07" class="refDate">July 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7301">https://www.rfc-editor.org/rfc/rfc7301</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS-ECDHE">[TLS-ECDHE]</dt>
         <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)"</span>, <span class="seriesInfo">RFC 5289</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc5289">https://datatracker.ietf.org/doc/html/rfc5289</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"TLS Elliptic Curve Cipher Suites with SHA-256/384 and AES Galois Counter Mode (GCM)"</span>, <span class="seriesInfo">RFC 5289</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5289">https://www.rfc-editor.org/rfc/rfc5289</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS-EXT">[TLS-EXT]</dt>
         <dd>
-<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"Transport Layer Security (TLS) Extensions: Extension Definitions"</span>, <span class="seriesInfo">RFC 6066</span>, <time datetime="2011-01" class="refDate">January 2011</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6066">https://datatracker.ietf.org/doc/html/rfc6066</a>&gt;</span>. </dd>
+<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refTitle">"Transport Layer Security (TLS) Extensions: Extension Definitions"</span>, <span class="seriesInfo">RFC 6066</span>, <time datetime="2011-01" class="refDate">January 2011</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6066">https://www.rfc-editor.org/rfc/rfc6066</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS12">[TLS12]</dt>
         <dd>
-<span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc5246">https://datatracker.ietf.org/doc/html/rfc5246</a>&gt;</span>. </dd>
+<span class="refAuthor">Dierks, T.</span> and <span class="refAuthor">E. Rescorla</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.2"</span>, <span class="seriesInfo">RFC 5246</span>, <time datetime="2008-08" class="refDate">August 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5246">https://www.rfc-editor.org/rfc/rfc5246</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS13">[TLS13]</dt>
       <dd>
-<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8446">https://datatracker.ietf.org/doc/html/rfc8446</a>&gt;</span>. </dd>
+<span class="refAuthor">Rescorla, E.</span>, <span class="refTitle">"The Transport Layer Security (TLS) Protocol Version 1.3"</span>, <span class="seriesInfo">RFC 8446</span>, <span class="seriesInfo">DOI 10.17487/RFC8446</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8446">https://www.rfc-editor.org/rfc/rfc8446</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -5665,7 +5668,7 @@ cookie: e=f
 <dl class="references">
 <dt id="ALT-SVC">[ALT-SVC]</dt>
         <dd>
-<span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">McManus, P.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Alternative Services"</span>, <span class="seriesInfo">RFC 7838</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7838">https://datatracker.ietf.org/doc/html/rfc7838</a>&gt;</span>. </dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">McManus, P.</span>, and <span class="refAuthor">J. Reschke</span>, <span class="refTitle">"HTTP Alternative Services"</span>, <span class="seriesInfo">RFC 7838</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7838">https://www.rfc-editor.org/rfc/rfc7838</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="BREACH">[BREACH]</dt>
         <dd>
@@ -5673,7 +5676,7 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="DNS-TERMS">[DNS-TERMS]</dt>
         <dd>
-<span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Sullivan, A.</span>, and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8499">https://datatracker.ietf.org/doc/html/rfc8499</a>&gt;</span>. </dd>
+<span class="refAuthor">Hoffman, P.</span>, <span class="refAuthor">Sullivan, A.</span>, and <span class="refAuthor">K. Fujiwara</span>, <span class="refTitle">"DNS Terminology"</span>, <span class="seriesInfo">BCP 219</span>, <span class="seriesInfo">RFC 8499</span>, <span class="seriesInfo">DOI 10.17487/RFC8499</span>, <time datetime="2019-01" class="refDate">January 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8499">https://www.rfc-editor.org/rfc/rfc8499</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="HTTP11">[HTTP11]</dt>
         <dd>
@@ -5681,7 +5684,7 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="I-D.ietf-httpbis-priority">[I-D.ietf-httpbis-priority]</dt>
         <dd>
-<span class="refAuthor">Oku, K.</span> and <span class="refAuthor">L. Pardue</span>, <span class="refTitle">"Extensible Prioritization Scheme for HTTP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-priority-07</span>, <time datetime="2021-10-25" class="refDate">25 October 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-priority-07">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-priority-07</a>&gt;</span>. </dd>
+<span class="refAuthor">Oku, K.</span> and <span class="refAuthor">L. Pardue</span>, <span class="refTitle">"Extensible Prioritization Scheme for HTTP"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpbis-priority-09</span>, <time datetime="2021-11-10" class="refDate">10 November 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-priority-09">https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-priority-09</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="NFLX-2019-002">[NFLX-2019-002]</dt>
         <dd>
@@ -5689,35 +5692,35 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="PRIVACY">[PRIVACY]</dt>
         <dd>
-<span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Aboba, B.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Morris, J.</span>, <span class="refAuthor">Hansen, M.</span>, and <span class="refAuthor">R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6973">https://datatracker.ietf.org/doc/html/rfc6973</a>&gt;</span>. </dd>
+<span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Aboba, B.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Morris, J.</span>, <span class="refAuthor">Hansen, M.</span>, and <span class="refAuthor">R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6973">https://www.rfc-editor.org/rfc/rfc6973</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC3749">[RFC3749]</dt>
         <dd>
-<span class="refAuthor">Hollenbeck, S.</span>, <span class="refTitle">"Transport Layer Security Protocol Compression Methods"</span>, <span class="seriesInfo">RFC 3749</span>, <time datetime="2004-05" class="refDate">May 2004</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc3749">https://datatracker.ietf.org/doc/html/rfc3749</a>&gt;</span>. </dd>
+<span class="refAuthor">Hollenbeck, S.</span>, <span class="refTitle">"Transport Layer Security Protocol Compression Methods"</span>, <span class="seriesInfo">RFC 3749</span>, <time datetime="2004-05" class="refDate">May 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3749">https://www.rfc-editor.org/rfc/rfc3749</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6585">[RFC6585]</dt>
         <dd>
-<span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">R. Fielding</span>, <span class="refTitle">"Additional HTTP Status Codes"</span>, <span class="seriesInfo">RFC 6585</span>, <time datetime="2012-04" class="refDate">April 2012</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc6585">https://datatracker.ietf.org/doc/html/rfc6585</a>&gt;</span>. </dd>
+<span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">R. Fielding</span>, <span class="refTitle">"Additional HTTP Status Codes"</span>, <span class="seriesInfo">RFC 6585</span>, <time datetime="2012-04" class="refDate">April 2012</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6585">https://www.rfc-editor.org/rfc/rfc6585</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7323">[RFC7323]</dt>
         <dd>
-<span class="refAuthor">Borman, D.</span>, <span class="refAuthor">Braden, B.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">R. Scheffenegger, Ed.</span>, <span class="refTitle">"TCP Extensions for High Performance"</span>, <span class="seriesInfo">RFC 7323</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7323">https://datatracker.ietf.org/doc/html/rfc7323</a>&gt;</span>. </dd>
+<span class="refAuthor">Borman, D.</span>, <span class="refAuthor">Braden, B.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">R. Scheffenegger, Ed.</span>, <span class="refTitle">"TCP Extensions for High Performance"</span>, <span class="seriesInfo">RFC 7323</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7323">https://www.rfc-editor.org/rfc/rfc7323</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7540">[RFC7540]</dt>
         <dd>
-<span class="refAuthor">Belshe, M.</span>, <span class="refAuthor">Peon, R.</span>, and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7540">https://datatracker.ietf.org/doc/html/rfc7540</a>&gt;</span>. </dd>
+<span class="refAuthor">Belshe, M.</span>, <span class="refAuthor">Peon, R.</span>, and <span class="refAuthor">M. Thomson, Ed.</span>, <span class="refTitle">"Hypertext Transfer Protocol Version 2 (HTTP/2)"</span>, <span class="seriesInfo">RFC 7540</span>, <span class="seriesInfo">DOI 10.17487/RFC7540</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7540">https://www.rfc-editor.org/rfc/rfc7540</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8422">[RFC8422]</dt>
         <dd>
-<span class="refAuthor">Nir, Y.</span>, <span class="refAuthor">Josefsson, S.</span>, and <span class="refAuthor">M. Pegourie-Gonnard</span>, <span class="refTitle">"Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS) Versions 1.2 and Earlier"</span>, <span class="seriesInfo">RFC 8422</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8422">https://datatracker.ietf.org/doc/html/rfc8422</a>&gt;</span>. </dd>
+<span class="refAuthor">Nir, Y.</span>, <span class="refAuthor">Josefsson, S.</span>, and <span class="refAuthor">M. Pegourie-Gonnard</span>, <span class="refTitle">"Elliptic Curve Cryptography (ECC) Cipher Suites for Transport Layer Security (TLS) Versions 1.2 and Earlier"</span>, <span class="seriesInfo">RFC 8422</span>, <time datetime="2018-08" class="refDate">August 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8422">https://www.rfc-editor.org/rfc/rfc8422</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8441">[RFC8441]</dt>
         <dd>
-<span class="refAuthor">McManus, P.</span>, <span class="refTitle">"Bootstrapping WebSockets with HTTP/2"</span>, <span class="seriesInfo">RFC 8441</span>, <span class="seriesInfo">DOI 10.17487/RFC8441</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8441">https://datatracker.ietf.org/doc/html/rfc8441</a>&gt;</span>. </dd>
+<span class="refAuthor">McManus, P.</span>, <span class="refTitle">"Bootstrapping WebSockets with HTTP/2"</span>, <span class="seriesInfo">RFC 8441</span>, <span class="seriesInfo">DOI 10.17487/RFC8441</span>, <time datetime="2018-09" class="refDate">September 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8441">https://www.rfc-editor.org/rfc/rfc8441</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8740">[RFC8740]</dt>
         <dd>
-<span class="refAuthor">Benjamin, D.</span>, <span class="refTitle">"Using TLS 1.3 with HTTP/2"</span>, <span class="seriesInfo">RFC 8740</span>, <span class="seriesInfo">DOI 10.17487/RFC8740</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8740">https://datatracker.ietf.org/doc/html/rfc8740</a>&gt;</span>. </dd>
+<span class="refAuthor">Benjamin, D.</span>, <span class="refTitle">"Using TLS 1.3 with HTTP/2"</span>, <span class="seriesInfo">RFC 8740</span>, <span class="seriesInfo">DOI 10.17487/RFC8740</span>, <time datetime="2020-02" class="refDate">February 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8740">https://www.rfc-editor.org/rfc/rfc8740</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TALKING">[TALKING]</dt>
         <dd>
@@ -5725,7 +5728,7 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="TLSBCP">[TLSBCP]</dt>
       <dd>
-<span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Holz, R.</span>, and <span class="refAuthor">P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc7525">https://datatracker.ietf.org/doc/html/rfc7525</a>&gt;</span>. </dd>
+<span class="refAuthor">Sheffer, Y.</span>, <span class="refAuthor">Holz, R.</span>, and <span class="refAuthor">P. Saint-Andre</span>, <span class="refTitle">"Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="seriesInfo">BCP 195</span>, <span class="seriesInfo">RFC 7525</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7525">https://www.rfc-editor.org/rfc/rfc7525</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
