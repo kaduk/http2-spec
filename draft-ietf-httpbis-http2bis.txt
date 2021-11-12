@@ -1594,7 +1594,7 @@ Table of Contents
      ACK Flag (1),
 
      Reserved (1),
-     Stream Identifier (31),
+     Stream Identifier (31) = 0,
 
      Setting (48) ...,
    }
@@ -1696,8 +1696,8 @@ Table of Contents
    settings MUST be ignored.  Once all values have been processed, the
    recipient MUST immediately emit a SETTINGS frame with the ACK flag
    set.  Upon receiving a SETTINGS frame with the ACK flag set, the
-   sender of the altered settings can rely on the value having been
-   applied.
+   sender of the altered settings can rely on the values from the oldest
+   unacknowledged SETTINGS frame having been applied.
 
    If the sender of a SETTINGS frame does not receive an acknowledgement
    within a reasonable amount of time, it MAY issue a connection error
@@ -1840,7 +1840,7 @@ Table of Contents
      ACK Flag (1),
 
      Reserved (1),
-     Stream Identifier (31),
+     Stream Identifier (31) = 0,
 
      Opaque Data (64),
    }
@@ -1927,7 +1927,7 @@ Table of Contents
      Unused Flags (8),
 
      Reserved (1),
-     Stream Identifier (31),
+     Stream Identifier (31) = 0,
 
      Reserved (1),
      Last-Stream-ID (31),
@@ -2069,7 +2069,7 @@ Table of Contents
    indicates the affected stream; in the latter, the value "0" indicates
    that the entire connection is the subject of the frame.
 
-   A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an
+   A receiver MUST treat the receipt of a WINDOW_UPDATE frame with a
    flow-control window increment of 0 as a stream error (Section 5.4.2)
    of type PROTOCOL_ERROR; errors on the connection flow-control window
    MUST be treated as a connection error (Section 5.4.1).
@@ -2610,11 +2610,11 @@ Table of Contents
 
       An intermediary that forwards a request over HTTP/2 MUST construct
       an :authority pseudo-header field using the authority information
-      from the control data of the original request, unless the the
-      original request's target URI does not contain authority
-      information (in which case it MUST NOT generate :authority).  Note
-      that the Host header field is not the sole source of this
-      information; see Section 7.2 of [HTTP].
+      from the control data of the original request, unless the original
+      request's target URI does not contain authority information (in
+      which case it MUST NOT generate :authority).  Note that the Host
+      header field is not the sole source of this information; see
+      Section 7.2 of [HTTP].
 
       An intermediary that needs to generate a Host header field (which
       might be necessary to construct an HTTP/1.1 request) MUST use the
@@ -3293,10 +3293,10 @@ Table of Contents
    HPACK permits encoding of field names and values that might be
    treated as delimiters in other HTTP versions.  An intermediary that
    translates an HTTP/2 request or response MUST validate fields
-   according to the rules in Section 8.2 roles before translating a
-   message to another HTTP version.  Translating a field that includes
-   invalid delimiters could be used to cause recipients to incorrectly
-   interpret a message, which could be exploited by an attacker.
+   according to the rules in Section 8.2 before translating a message to
+   another HTTP version.  Translating a field that includes invalid
+   delimiters could be used to cause recipients to incorrectly interpret
+   a message, which could be exploited by an attacker.
 
    An intermediary can reject fields that contain invalid field names or
    values for other reasons, in particular those that do not conform to
@@ -3440,7 +3440,7 @@ Table of Contents
 
 10.5.2.  CONNECT Issues
 
-   The CONNECT method can be used to create disproportionate load on an
+   The CONNECT method can be used to create disproportionate load on a
    proxy, since stream creation is relatively inexpensive when compared
    to the creation and maintenance of a TCP connection.  A proxy might
    also maintain some resources for a TCP connection beyond the closing

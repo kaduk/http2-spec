@@ -3304,7 +3304,7 @@ SETTINGS Frame {
   ACK Flag (1),
 
   Reserved (1),
-  Stream Identifier (31),
+  Stream Identifier (31) = 0,
 
   Setting (48) ...,
 }
@@ -3448,7 +3448,8 @@ Setting {
             other frame processing between values.  Unsupported settings MUST be ignored.  Once
             all values have been processed, the recipient MUST immediately emit a SETTINGS frame
             with the ACK flag set. Upon receiving a SETTINGS frame with the ACK flag set, the sender
-            of the altered settings can rely on the value having been applied.<a href="#section-6.5.3-2" class="pilcrow">¶</a></p>
+            of the altered settings can rely on the values from the oldest unacknowledged SETTINGS frame
+            having been applied.<a href="#section-6.5.3-2" class="pilcrow">¶</a></p>
 <p id="section-6.5.3-3">
             If the sender of a SETTINGS frame does not receive an acknowledgement within a
             reasonable amount of time, it MAY issue a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type
@@ -3626,7 +3627,7 @@ PING Frame {
   ACK Flag (1),
 
   Reserved (1),
-  Stream Identifier (31),
+  Stream Identifier (31) = 0,
 
   Opaque Data (64),
 }
@@ -3717,7 +3718,7 @@ GOAWAY Frame {
   Unused Flags (8),
 
   Reserved (1),
-  Stream Identifier (31),
+  Stream Identifier (31) = 0,
 
   Reserved (1),
   Last-Stream-ID (31),
@@ -3858,7 +3859,7 @@ WINDOW_UPDATE Frame {
           former case, the frame's stream identifier indicates the affected stream; in the latter,
           the value "0" indicates that the entire connection is the subject of the frame.<a href="#section-6.9-8" class="pilcrow">¶</a></p>
 <p id="section-6.9-9">
-          A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an flow-control window
+          A receiver MUST treat the receipt of a WINDOW_UPDATE frame with a flow-control window
           increment of 0 as a <span><a href="#StreamErrorHandler" class="xref">stream error</a> (<a href="#StreamErrorHandler" class="xref">Section 5.4.2</a>)</span> of type
           <a href="#PROTOCOL_ERROR" class="xref">PROTOCOL_ERROR</a>; errors on the connection flow-control window MUST be
           treated as a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span>.<a href="#section-6.9-9" class="pilcrow">¶</a></p>
@@ -4489,7 +4490,7 @@ cookie: e=f
 <p id="section-8.3.1-2.3.4">
                 An intermediary that forwards a request over HTTP/2 MUST construct an
                 <code>:authority</code> pseudo-header field using the authority information from the
-                control data of the original request, unless the the original request's target URI
+                control data of the original request, unless the original request's target URI
                 does not contain authority information (in which case it MUST NOT generate
                 <code>:authority</code>). Note that the <code>Host</code> header field is not the sole
                 source of this information; see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-7.2" class="relref">Section 7.2</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>.<a href="#section-8.3.1-2.3.4" class="pilcrow">¶</a></p>
@@ -5244,7 +5245,7 @@ cookie: e=f
 <p id="section-10.3-1">
           HPACK permits encoding of field names and values that might be treated as delimiters in
           other HTTP versions.  An intermediary that translates an HTTP/2 request or response MUST
-          validate fields according to the rules in <a href="#HttpHeaders" class="xref">Section 8.2</a> roles before
+          validate fields according to the rules in <a href="#HttpHeaders" class="xref">Section 8.2</a> before
           translating a message to another HTTP version.  Translating a field that includes invalid
           delimiters could be used to cause recipients to incorrectly interpret a message, which
           could be exploited by an attacker.<a href="#section-10.3-1" class="pilcrow">¶</a></p>
@@ -5399,7 +5400,7 @@ cookie: e=f
 <a href="#section-10.5.2" class="section-number selfRef">10.5.2. </a><a href="#name-connect-issues" class="section-name selfRef">CONNECT Issues</a>
           </h4>
 <p id="section-10.5.2-1">
-            The CONNECT method can be used to create disproportionate load on an proxy, since stream
+            The CONNECT method can be used to create disproportionate load on a proxy, since stream
             creation is relatively inexpensive when compared to the creation and maintenance of a
             TCP connection.  A proxy might also maintain some resources for a TCP connection beyond
             the closing of the stream that carries the CONNECT request, since the outgoing TCP
