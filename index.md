@@ -14,6 +14,13 @@ View [saved issues](issues.html), or the latest GitHub [issues](https://github.c
 | [HPACK](tlsbcp/draft-ietf-httpbis-header-compression.html) |[plain text](tlsbcp/draft-ietf-httpbis-header-compression.txt) |[datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-header-compression) |[diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt&amp;url2=https://httpwg.github.io/http2-spec/tlsbcp/draft-ietf-httpbis-header-compression.txt) |[diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-header-compression&amp;url2=https://httpwg.github.io/http2-spec/tlsbcp/draft-ietf-httpbis-header-compression.txt) | |
 | [HTTP/2](tlsbcp/draft-ietf-httpbis-http2bis.html) |[plain text](tlsbcp/draft-ietf-httpbis-http2bis.txt) |[datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-http2bis) |[diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt&amp;url2=https://httpwg.github.io/http2-spec/tlsbcp/draft-ietf-httpbis-http2bis.txt) |[diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-http2bis&amp;url2=https://httpwg.github.io/http2-spec/tlsbcp/draft-ietf-httpbis-http2bis.txt) | |
 
+## Preview for branch [tailored](tailored)
+
+| Draft |     |     |     |     |     |     |
+| ----- | --- | --- | --- | --- | --- | --- |
+| [HPACK](tailored/draft-ietf-httpbis-header-compression.html) |[plain text](tailored/draft-ietf-httpbis-header-compression.txt) |[datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-header-compression) |[diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt&amp;url2=https://httpwg.github.io/http2-spec/tailored/draft-ietf-httpbis-header-compression.txt) |[diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-header-compression&amp;url2=https://httpwg.github.io/http2-spec/tailored/draft-ietf-httpbis-header-compression.txt) | |
+| [HTTP/2](tailored/draft-ietf-httpbis-http2bis.html) |[plain text](tailored/draft-ietf-httpbis-http2bis.txt) |[datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-http2bis) |[diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt&amp;url2=https://httpwg.github.io/http2-spec/tailored/draft-ietf-httpbis-http2bis.txt) |[diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-http2bis&amp;url2=https://httpwg.github.io/http2-spec/tailored/draft-ietf-httpbis-http2bis.txt) | |
+
 ## Preview for branch [tcpbis](tcpbis)
 
 | Draft |     |     |     |     |     |     |
