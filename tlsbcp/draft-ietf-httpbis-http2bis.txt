@@ -3636,11 +3636,9 @@ Table of Contents
               Data in HTTP", RFC 8470, DOI 10.17487/RFC8470, September
               2018, <https://www.rfc-editor.org/rfc/rfc8470>.
 
-   [TCP]      Eddy, W. M., "Transmission Control Protocol (TCP)
-              Specification", Work in Progress, Internet-Draft, draft-
-              ietf-tcpm-rfc793bis-25, 7 September 2021,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-tcpm-
-              rfc793bis-25>.
+   [TCP]      Postel, J., "Transmission Control Protocol", STD 7,
+              RFC 793, September 1981,
+              <https://www.rfc-editor.org/rfc/rfc793>.
 
    [TLS-ALPN] Friedl, S., Popov, A., Langley, A., and E. Stephan,
               "Transport Layer Security (TLS) Application-Layer Protocol
