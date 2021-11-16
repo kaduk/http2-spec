@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-14T01:02:21.368652+00:00",
+  "timestamp": "2021-11-16T01:01:00.082625+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -41011,7 +41011,7 @@
       "labels": [],
       "body": "For #974 ",
       "createdAt": "2021-11-12T12:29:37Z",
-      "updatedAt": "2021-11-12T12:55:56Z",
+      "updatedAt": "2021-11-15T00:47:28Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "ed41e990998e918ca6dee3fd1dbbe4c587ce622a",
@@ -41022,7 +41022,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "As tcpbis is stuck in DISCUSS purgatory and we have no strong need to refer to the latest and shiniest version of TCP, I suggest that we not merge this.  Thanks to Francesca for highlighting the issues there.",
+          "createdAt": "2021-11-15T00:47:28Z",
+          "updatedAt": "2021-11-15T00:47:28Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOAHsHi84v9-OO",
