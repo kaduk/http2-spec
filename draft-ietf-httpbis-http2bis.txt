@@ -3573,7 +3573,7 @@ Table of Contents
 
    Ref.:  Section 3.2.1 of [RFC7540]
 
-   Comments:  Obsolete; see Section 11.1
+   Comments:  Obsolete; see Section 11.1 of this document
 
 11.2.  The h2c Upgrade Token
 
