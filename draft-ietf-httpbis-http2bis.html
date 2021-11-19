@@ -4508,7 +4508,7 @@ cookie: e=f
                 header field.<a href="#section-8.3.1-2.3.6" class="pilcrow">¶</a></p>
 <p id="section-8.3.1-2.3.7">
                 Note that request targets for CONNECT or asterisk-form OPTIONS requests never
-                include authority information.<a href="#section-8.3.1-2.3.7" class="pilcrow">¶</a></p>
+                include authority information; see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-7.1" class="relref">Section 7.1</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>.<a href="#section-8.3.1-2.3.7" class="pilcrow">¶</a></p>
 <p id="section-8.3.1-2.3.8">
                 <code>:authority</code> MUST NOT include the deprecated userinfo subcomponent for
                 <code>http</code> or <code>https</code> schemed URIs.<a href="#section-8.3.1-2.3.8" class="pilcrow">¶</a></p>
@@ -5523,11 +5523,11 @@ cookie: e=f
         for frame types, settings, and error codes.  These registrations and registries apply to
         HTTP/2, but are not redefined in this document.<a href="#section-11-2" class="pilcrow">¶</a></p>
 <p id="section-11-3">
-        [RFC Editor: please remove this paragraph.]  IANA is requested to update references to RFC
-        7540 in the following registries to refer to this document: Application-Layer Protocol
-        Negotiation (ALPN) Protocol IDs, HTTP/2 Frame Type, HTTP/2 Settings, HTTP/2 Error Code, and
-        HTTP Method Registry.  The registration of the <code>PRI</code> method needs to be updated to
-        refer to <a href="#preface" class="xref">Section 3.4</a>; all other section numbers have not changed.<a href="#section-11-3" class="pilcrow">¶</a></p>
+        IANA is requested to update references to RFC 7540 in the following registries to refer to
+        this document: Application-Layer Protocol Negotiation (ALPN) Protocol IDs, HTTP/2 Frame
+        Type, HTTP/2 Settings, HTTP/2 Error Code, and HTTP Method Registry.  The registration of the
+        <code>PRI</code> method needs to be updated to refer to <a href="#preface" class="xref">Section 3.4</a>; all other
+        section numbers have not changed.<a href="#section-11-3" class="pilcrow">¶</a></p>
 <div id="HTTP2-Settings">
 <section id="section-11.1">
         <h3 id="name-http2-settings-header-field">
