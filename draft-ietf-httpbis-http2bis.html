@@ -4284,8 +4284,7 @@ CONTINUATION Frame {
             complete request. Similarly, intermediaries might forward incomplete messages before
             detecting errors. A server MAY generate a final response before receiving an entire
             request when the response does not depend on the remainder of the request being
-            correct. A server or intermediary MAY use <a href="#RST_STREAM" class="xref">RST_STREAM</a> -- with a code other than <a href="#REFUSED_STREAM" class="xref">REFUSED_STREAM</a> -- to abort a stream if a
-            malformed request or response is received.<a href="#section-8.1.1-5" class="pilcrow">¶</a></p>
+            correct.<a href="#section-8.1.1-5" class="pilcrow">¶</a></p>
 <p id="section-8.1.1-6">
             These requirements are intended to protect against several types of common attacks
             against HTTP; they are deliberately strict because being permissive can expose
@@ -4311,7 +4310,7 @@ CONTINUATION Frame {
 <p id="section-8.2.1-1">
             The definitions of field names and values in HTTP prohibits some characters that HPACK
             might be able to convey.  HTTP/2 implementations SHOULD validate field names and values
-            according to their definitions in Sections <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.1" class="relref">Section 5.1</a> of [<a href="#HTTP" class="xref">5.1</a>]</span> and <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.5" class="relref">Section 5.5</a> of [<a href="#HTTP" class="xref">5.5</a>]</span> of <span>[<a href="#HTTP" class="xref">HTTP</a>]</span> respectively and treat messages that contain prohibited characters as
+            according to their definitions in Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.1" class="relref">5.1</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.5" class="relref">5.5</a> of <span>[<a href="#HTTP" class="xref">HTTP</a>]</span> respectively and treat messages that contain prohibited characters as
             <span><a href="#malformed" class="xref">malformed</a> (<a href="#malformed" class="xref">Section 8.1.1</a>)</span>.<a href="#section-8.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-8.2.1-2">
             Failure to validate fields can be exploited for request smuggling attacks.  In
@@ -4343,7 +4342,7 @@ CONTINUATION Frame {
 <aside id="section-8.2.1-4">
             <p id="section-8.2.1-4.1">
             Note: An implementation that validates fields according the definitions in Sections
-            <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.1" class="relref">Section 5.1</a> of [<a href="#HTTP" class="xref">5.1</a>]</span> and <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.5" class="relref">Section 5.5</a> of [<a href="#HTTP" class="xref">5.5</a>]</span> of <span>[<a href="#HTTP" class="xref">HTTP</a>]</span> only needs an additional check
+            <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.1" class="relref">5.1</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-5.5" class="relref">5.5</a> of <span>[<a href="#HTTP" class="xref">HTTP</a>]</span> only needs an additional check
             that field names do not include uppercase characters.<a href="#section-8.2.1-4.1" class="pilcrow">¶</a></p>
 </aside>
 <p id="section-8.2.1-5">

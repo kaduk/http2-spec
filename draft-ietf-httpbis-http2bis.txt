@@ -2422,10 +2422,7 @@ Table of Contents
    request.  Similarly, intermediaries might forward incomplete messages
    before detecting errors.  A server MAY generate a final response
    before receiving an entire request when the response does not depend
-   on the remainder of the request being correct.  A server or
-   intermediary MAY use RST_STREAM -- with a code other than
-   REFUSED_STREAM -- to abort a stream if a malformed request or
-   response is received.
+   on the remainder of the request being correct.
 
    These requirements are intended to protect against several types of
    common attacks against HTTP; they are deliberately strict because
@@ -2445,9 +2442,9 @@ Table of Contents
    The definitions of field names and values in HTTP prohibits some
    characters that HPACK might be able to convey.  HTTP/2
    implementations SHOULD validate field names and values according to
-   their definitions in Sections Section 5.1 of [5.1] and Section 5.5 of
-   [5.5] of [HTTP] respectively and treat messages that contain
-   prohibited characters as malformed (Section 8.1.1).
+   their definitions in Sections 5.1 and 5.5 of [HTTP] respectively and
+   treat messages that contain prohibited characters as malformed
+   (Section 8.1.1).
 
    Failure to validate fields can be exploited for request smuggling
    attacks.  In particular, unvalidated fields might enable attacks when
@@ -2472,9 +2469,9 @@ Table of Contents
       character (ASCII SP or HTAB, 0x20 or 0x9).
 
       |  Note: An implementation that validates fields according the
-      |  definitions in Sections Section 5.1 of [5.1] and Section 5.5 of
-      |  [5.5] of [HTTP] only needs an additional check that field names
-      |  do not include uppercase characters.
+      |  definitions in Sections 5.1 and 5.5 of [HTTP] only needs an
+      |  additional check that field names do not include uppercase
+      |  characters.
 
    A request or response that contains a field that violates any of
    these conditions MUST be treated as malformed (Section 8.1.1).  In
