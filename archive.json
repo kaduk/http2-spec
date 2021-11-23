@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-21T01:03:12.469222+00:00",
+  "timestamp": "2021-11-23T01:00:41.964402+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -41523,6 +41523,34 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 989,
+      "id": "PR_kwDOAHsHi84u4N7H",
+      "title": "Updates to -semantics are important",
+      "url": "https://github.com/httpwg/http2-spec/pull/989",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "Important enough to note in the change log anyway.",
+      "createdAt": "2021-11-22T23:02:20Z",
+      "updatedAt": "2021-11-22T23:02:20Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "21d73239985424ae6b6b49d4773d13e3361f5531",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "editorial-semantics-cl",
+      "headRefOid": "a627e392fc43d8b74649768f0094d4016d3c371e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
