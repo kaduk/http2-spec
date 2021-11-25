@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-23T01:00:41.964402+00:00",
+  "timestamp": "2021-11-25T01:01:33.046447+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -41538,7 +41538,7 @@
       ],
       "body": "Important enough to note in the change log anyway.",
       "createdAt": "2021-11-22T23:02:20Z",
-      "updatedAt": "2021-11-22T23:02:20Z",
+      "updatedAt": "2021-11-23T08:44:40Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "21d73239985424ae6b6b49d4773d13e3361f5531",
@@ -41550,7 +41550,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOAHsHi84wes33",
+          "commit": {
+            "abbreviatedOid": "a627e39"
+          },
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-11-23T08:44:40Z",
+          "updatedAt": "2021-11-23T08:44:40Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
