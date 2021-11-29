@@ -2822,11 +2822,13 @@ Table of Contents
 
    A client can use the SETTINGS_MAX_CONCURRENT_STREAMS setting to limit
    the number of responses that can be concurrently pushed by a server.
-   Advertising a SETTINGS_MAX_CONCURRENT_STREAMS value of zero disables
-   server push by preventing the server from creating the necessary
-   streams.  This does not prohibit a server from sending PUSH_PROMISE
-   frames; clients need to reset any promised streams that are not
-   wanted.
+   Advertising a SETTINGS_MAX_CONCURRENT_STREAMS value of zero prevents
+   the server from opening the streams necessary to push responses.
+   However, this does not prevent the server from reserving streams
+   using PUSH_PROMISE frames, because "reserved" streams do not count
+   toward the concurrent stream limit.  Clients that do not wish to
+   receive pushed resources need to reset any unwanted reserved streams
+   or set SETTINGS_ENABLE_PUSH to 0.
 
    Clients receiving a pushed response MUST validate that either the
    server is authoritative (see Section 10.1) or the proxy that provided

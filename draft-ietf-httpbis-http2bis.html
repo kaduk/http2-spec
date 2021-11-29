@@ -4682,10 +4682,11 @@ cookie: e=f
             response, the client can send a <a href="#RST_STREAM" class="xref">RST_STREAM</a> frame, using either the <a href="#CANCEL" class="xref">CANCEL</a> or <a href="#REFUSED_STREAM" class="xref">REFUSED_STREAM</a> code and referencing the pushed stream's identifier.<a href="#section-8.4.2-3" class="pilcrow">¶</a></p>
 <p id="section-8.4.2-4">
             A client can use the <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="xref">SETTINGS_MAX_CONCURRENT_STREAMS</a> setting to limit the number of
-            responses that can be concurrently pushed by a server. Advertising a <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="xref">SETTINGS_MAX_CONCURRENT_STREAMS</a> value of zero disables server push
-            by preventing the server from creating the necessary streams. This does not prohibit a
-            server from sending <a href="#PUSH_PROMISE" class="xref">PUSH_PROMISE</a>
-            frames; clients need to reset any promised streams that are not wanted.<a href="#section-8.4.2-4" class="pilcrow">¶</a></p>
+            responses that can be concurrently pushed by a server. Advertising a <a href="#SETTINGS_MAX_CONCURRENT_STREAMS" class="xref">SETTINGS_MAX_CONCURRENT_STREAMS</a> value of zero prevents the server
+            from opening the streams necessary to push responses. However, this does not prevent the
+            server from reserving streams using <a href="#PUSH_PROMISE" class="xref">PUSH_PROMISE</a> frames, because "reserved" streams do not count toward
+            the concurrent stream limit. Clients that do not wish to receive pushed resources need
+            to reset any unwanted reserved streams or set <a href="#SETTINGS_ENABLE_PUSH" class="xref">SETTINGS_ENABLE_PUSH</a> to 0.<a href="#section-8.4.2-4" class="pilcrow">¶</a></p>
 <p id="section-8.4.2-5">
             Clients receiving a pushed response MUST validate that either the server is
             authoritative (see <a href="#authority" class="xref">Section 10.1</a>) or the proxy that provided the pushed
