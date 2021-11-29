@@ -2256,6 +2256,11 @@ HTTP Frame {
                     stream but references the newly reserved stream in the Promised Stream ID
                     field.<a href="#section-5.1-7.2.3.4" class="pilcrow">¶</a>
 </li>
+              <li class="normal" id="section-5.1-7.2.3.5">
+                Opening a stream with a higher-valued stream identifier causes the stream to
+                transition immediately to a "closed" state; note that this transition is not shown
+                in the diagram.<a href="#section-5.1-7.2.3.5" class="pilcrow">¶</a>
+</li>
             </ul>
 <p id="section-5.1-7.2.4">
                 Receiving any frame other than <a href="#HEADERS" class="xref">HEADERS</a> or <a href="#PRIORITY" class="xref">PRIORITY</a> on
@@ -2454,8 +2459,8 @@ HTTP Frame {
             A <a href="#HEADERS" class="xref">HEADERS</a> frame will transition the client-initiated stream identified
             by the stream identifier in the frame header from "idle" to "open". A <a href="#PUSH_PROMISE" class="xref">PUSH_PROMISE</a>
             frame will transition the server-initiated stream identified by the "Promised Stream ID" field in the frame payload from "idle" to "reserved". When
-            a stream transitions out of the "idle" state, all streams that might have been initiated by that peer with a lower-valued
-            stream identifier are implicitly transitioned to "closed". That is, an endpoint may skip a stream identifier, with the
+            a stream transitions out of the "idle" state, all "idle" streams that might have been opened by the peer with a lower-valued
+            stream identifier immediately transition to "closed". That is, an endpoint may skip a stream identifier, with the
             effect being that the skipped stream is immediately closed.<a href="#section-5.1.1-3" class="pilcrow">¶</a></p>
 <p id="section-5.1.1-4">
             Stream identifiers cannot be reused.  Long-lived connections can result in an endpoint

@@ -720,6 +720,10 @@ Table of Contents
          but references the newly reserved stream in the Promised Stream
          ID field.
 
+      *  Opening a stream with a higher-valued stream identifier causes
+         the stream to transition immediately to a "closed" state; note
+         that this transition is not shown in the diagram.
+
       Receiving any frame other than HEADERS or PRIORITY on a stream in
       this state MUST be treated as a connection error (Section 5.4.1)
       of type PROTOCOL_ERROR.  If this stream is server-initiated, as
@@ -896,11 +900,10 @@ Table of Contents
    to "open".  A PUSH_PROMISE frame will transition the server-initiated
    stream identified by the "Promised Stream ID" field in the frame
    payload from "idle" to "reserved".  When a stream transitions out of
-   the "idle" state, all streams that might have been initiated by that
-   peer with a lower-valued stream identifier are implicitly
-   transitioned to "closed".  That is, an endpoint may skip a stream
-   identifier, with the effect being that the skipped stream is
-   immediately closed.
+   the "idle" state, all "idle" streams that might have been opened by
+   the peer with a lower-valued stream identifier immediately transition
+   to "closed".  That is, an endpoint may skip a stream identifier, with
+   the effect being that the skipped stream is immediately closed.
 
    Stream identifiers cannot be reused.  Long-lived connections can
    result in an endpoint exhausting the available range of stream
