@@ -2125,7 +2125,9 @@ Table of Contents
    The receiver of a frame sends a WINDOW_UPDATE frame as it consumes
    data and frees up space in flow-control windows.  Separate
    WINDOW_UPDATE frames are sent for the stream- and connection-level
-   flow-control windows.
+   flow-control windows.  Receivers are advised to have mechanisms in
+   place to avoid sending WINDOW_UPDATE frames with very small
+   increments; see Section 4.2.3.3 of [RFC1122].
 
    A sender that receives a WINDOW_UPDATE frame updates the
    corresponding window by the amount specified in the frame.
@@ -3715,6 +3717,10 @@ Table of Contents
               DOI 10.17487/RFC6973, July 2013,
               <https://www.rfc-editor.org/rfc/rfc6973>.
 
+   [RFC1122]  Braden, R., Ed., "Requirements for Internet Hosts -
+              Communication Layers", RFC 1122, DOI 10.17487/RFC1122,
+              October 1989, <https://www.rfc-editor.org/rfc/rfc1122>.
+
    [RFC3749]  Hollenbeck, S., "Transport Layer Security Protocol
               Compression Methods", RFC 3749, May 2004,
               <https://www.rfc-editor.org/rfc/rfc3749>.
@@ -3725,7 +3731,7 @@ Table of Contents
 
    [RFC7323]  Borman, D., Braden, B., Jacobson, V., and R.
               Scheffenegger, Ed., "TCP Extensions for High Performance",
-              RFC 7323, September 2014,
+              RFC 7323, DOI 10.17487/RFC7323, September 2014,
               <https://www.rfc-editor.org/rfc/rfc7323>.
 
    [RFC7540]  Belshe, M., Peon, R., and M. Thomson, Ed., "Hypertext

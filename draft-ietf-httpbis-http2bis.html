@@ -3878,7 +3878,8 @@ WINDOW_UPDATE Frame {
 <p id="section-6.9.1-5">
             The receiver of a frame sends a WINDOW_UPDATE frame as it consumes data and frees up
             space in flow-control windows.  Separate WINDOW_UPDATE frames are sent for the stream-
-            and connection-level flow-control windows.<a href="#section-6.9.1-5" class="pilcrow">¶</a></p>
+            and connection-level flow-control windows.  Receivers are advised to have mechanisms in
+            place to avoid sending WINDOW_UPDATE frames with very small increments; see <span><a href="https://rfc-editor.org/rfc/rfc1122#section-4.2.3.3" class="relref">Section 4.2.3.3</a> of [<a href="#RFC1122" class="xref">RFC1122</a>]</span>.<a href="#section-6.9.1-5" class="pilcrow">¶</a></p>
 <p id="section-6.9.1-6">
             A sender that receives a WINDOW_UPDATE frame updates the corresponding window by the
             amount specified in the frame.<a href="#section-6.9.1-6" class="pilcrow">¶</a></p>
@@ -5676,6 +5677,10 @@ cookie: e=f
         <dd>
 <span class="refAuthor">Cooper, A.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Aboba, B.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Morris, J.</span>, <span class="refAuthor">Hansen, M.</span>, and <span class="refAuthor">R. Smith</span>, <span class="refTitle">"Privacy Considerations for Internet Protocols"</span>, <span class="seriesInfo">RFC 6973</span>, <span class="seriesInfo">DOI 10.17487/RFC6973</span>, <time datetime="2013-07" class="refDate">July 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6973">https://www.rfc-editor.org/rfc/rfc6973</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC1122">[RFC1122]</dt>
+        <dd>
+<span class="refAuthor">Braden, R., Ed.</span>, <span class="refTitle">"Requirements for Internet Hosts - Communication Layers"</span>, <span class="seriesInfo">RFC 1122</span>, <span class="seriesInfo">DOI 10.17487/RFC1122</span>, <time datetime="1989-10" class="refDate">October 1989</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc1122">https://www.rfc-editor.org/rfc/rfc1122</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC3749">[RFC3749]</dt>
         <dd>
 <span class="refAuthor">Hollenbeck, S.</span>, <span class="refTitle">"Transport Layer Security Protocol Compression Methods"</span>, <span class="seriesInfo">RFC 3749</span>, <time datetime="2004-05" class="refDate">May 2004</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3749">https://www.rfc-editor.org/rfc/rfc3749</a>&gt;</span>. </dd>
@@ -5686,7 +5691,7 @@ cookie: e=f
 <dd class="break"></dd>
 <dt id="RFC7323">[RFC7323]</dt>
         <dd>
-<span class="refAuthor">Borman, D.</span>, <span class="refAuthor">Braden, B.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">R. Scheffenegger, Ed.</span>, <span class="refTitle">"TCP Extensions for High Performance"</span>, <span class="seriesInfo">RFC 7323</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7323">https://www.rfc-editor.org/rfc/rfc7323</a>&gt;</span>. </dd>
+<span class="refAuthor">Borman, D.</span>, <span class="refAuthor">Braden, B.</span>, <span class="refAuthor">Jacobson, V.</span>, and <span class="refAuthor">R. Scheffenegger, Ed.</span>, <span class="refTitle">"TCP Extensions for High Performance"</span>, <span class="seriesInfo">RFC 7323</span>, <span class="seriesInfo">DOI 10.17487/RFC7323</span>, <time datetime="2014-09" class="refDate">September 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7323">https://www.rfc-editor.org/rfc/rfc7323</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7540">[RFC7540]</dt>
         <dd>
