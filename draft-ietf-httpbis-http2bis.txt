@@ -2488,10 +2488,10 @@ Table of Contents
    values that are listed as prohibited above.
 
    When a request message violates one of these requirements, an
-   implementation SHOULD generate a Section 15.5.1 of 400 (Bad Request)
-   status code [HTTP], unless a more suitable status code is defined or
-   the status code cannot be sent (e.g., because the error occurs in a
-   trailer field).
+   implementation SHOULD generate a 400 (Bad Request) status code (see
+   Section 15.5.1 of [HTTP]), unless a more suitable status code is
+   defined or the status code cannot be sent (e.g., because the error
+   occurs in a trailer field).
 
       |  Note: Field values that are not valid according to the
       |  definition of the corresponding field do not cause a request to

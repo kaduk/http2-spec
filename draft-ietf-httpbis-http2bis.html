@@ -4330,7 +4330,7 @@ CONTINUATION Frame {
             contain any of the values that are listed as prohibited above.<a href="#section-8.2.1-5" class="pilcrow">¶</a></p>
 <p id="section-8.2.1-6">
             When a request message violates one of these requirements, an implementation SHOULD
-            generate a <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-15.5.1" class="relref">Section 15.5.1</a> of 400 (Bad Request) status code [<a href="#HTTP" class="xref">HTTP</a>]</span>,
+            generate a 400 (Bad Request) status code (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-15.5.1" class="relref">Section 15.5.1</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>),
             unless a more suitable status code is defined or the status code cannot be sent (e.g.,
             because the error occurs in a trailer field).<a href="#section-8.2.1-6" class="pilcrow">¶</a></p>
 <aside id="section-8.2.1-7">
