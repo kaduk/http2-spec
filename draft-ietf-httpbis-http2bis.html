@@ -4242,9 +4242,12 @@ CONTINUATION Frame {
 <p id="section-8.1.1-2">
             A request or response that includes message content can include a
             <code>content-length</code> header field. A request or response is also malformed if the
-            value of a <code>content-length</code> header field does not equal the sum of the <a href="#DATA" class="xref">DATA</a> frame payload lengths that form the content.
-            A response that is defined to have no content, as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-6.4" class="relref">Section 6.4</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>, can have a non-zero <code>content-length</code> header field, even
-            though no content is included in <a href="#DATA" class="xref">DATA</a> frames.<a href="#section-8.1.1-2" class="pilcrow">¶</a></p>
+            value of a <code>content-length</code> header field does not equal the sum of the <a href="#DATA" class="xref">DATA</a> frame payload lengths that form the content,
+            unless the message is defined as having no content.  For example, 204 or 304 responses
+            contain no content, as does the response to a HEAD request.  A response that is defined
+            to have no content, as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-semantics-18#section-6.4.1" class="relref">Section 6.4.1</a> of [<a href="#HTTP" class="xref">HTTP</a>]</span>, MAY have a
+            non-zero <code>content-length</code> header field, even though no content is included in
+            <a href="#DATA" class="xref">DATA</a> frames.<a href="#section-8.1.1-2" class="pilcrow">¶</a></p>
 <p id="section-8.1.1-3">
             Intermediaries that process HTTP requests or responses (i.e., any intermediary not
             acting as a tunnel) MUST NOT forward a malformed request or response. Malformed
