@@ -77,6 +77,13 @@ View [saved issues](issues.html), or the latest GitHub [issues](https://github.c
 | [HTTP/2](asterisk-form-ref/draft-ietf-httpbis-http2bis.html) | [plain text](asterisk-form-ref/draft-ietf-httpbis-http2bis.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt&amp;url2=https://httpwg.github.io/http2-spec/asterisk-form-ref/draft-ietf-httpbis-http2bis.txt) |
 | [HPACK](asterisk-form-ref/draft-ietf-httpbis-header-compression.html) | [plain text](asterisk-form-ref/draft-ietf-httpbis-header-compression.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt&amp;url2=https://httpwg.github.io/http2-spec/asterisk-form-ref/draft-ietf-httpbis-header-compression.txt) |
 
+## Preview for branch [idle-closed](idle-closed)
+
+| Draft |     |     |     |
+| ----- | --- | --- | --- |
+| [HTTP/2](idle-closed/draft-ietf-httpbis-http2bis.html) | [plain text](idle-closed/draft-ietf-httpbis-http2bis.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt&amp;url2=https://httpwg.github.io/http2-spec/idle-closed/draft-ietf-httpbis-http2bis.txt) |
+| [HPACK](idle-closed/draft-ietf-httpbis-header-compression.html) | [plain text](idle-closed/draft-ietf-httpbis-header-compression.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt&amp;url2=https://httpwg.github.io/http2-spec/idle-closed/draft-ietf-httpbis-header-compression.txt) |
+
 ## Preview for branch [of-this-doc](of-this-doc)
 
 | Draft |     |     |     |
