@@ -3429,8 +3429,9 @@ Setting {
             having been applied.<a href="#section-6.5.3-2" class="pilcrow">¶</a></p>
 <p id="section-6.5.3-3">
             If the sender of a SETTINGS frame does not receive an acknowledgement within a
-            reasonable amount of time, it MAY issue a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type
-            <a href="#SETTINGS_TIMEOUT" class="xref">SETTINGS_TIMEOUT</a>.<a href="#section-6.5.3-3" class="pilcrow">¶</a></p>
+            reasonable amount of time, it MAY issue a <span><a href="#ConnectionErrorHandler" class="xref">connection error</a> (<a href="#ConnectionErrorHandler" class="xref">Section 5.4.1</a>)</span> of type <a href="#SETTINGS_TIMEOUT" class="xref">SETTINGS_TIMEOUT</a>. In setting a timeout,
+            some allowance need to be made for processing delays at the peer; a timeout that is
+            solely based on the round trip time between endpoints might result in spurious errors.<a href="#section-6.5.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>

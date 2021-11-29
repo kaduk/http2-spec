@@ -1707,7 +1707,10 @@ Table of Contents
 
    If the sender of a SETTINGS frame does not receive an acknowledgement
    within a reasonable amount of time, it MAY issue a connection error
-   (Section 5.4.1) of type SETTINGS_TIMEOUT.
+   (Section 5.4.1) of type SETTINGS_TIMEOUT.  In setting a timeout, some
+   allowance need to be made for processing delays at the peer; a
+   timeout that is solely based on the round trip time between endpoints
+   might result in spurious errors.
 
 6.6.  PUSH_PROMISE
 
