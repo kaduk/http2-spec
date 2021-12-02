@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-30T01:01:22.449702+00:00",
+  "timestamp": "2021-12-02T01:01:59.008687+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -20552,6 +20552,30 @@
           "body": "FYI @martinthomson I've updated this post to have a list of checkboxes for \"addressed\".",
           "createdAt": "2021-11-29T07:00:24Z",
           "updatedAt": "2021-11-29T07:00:24Z"
+        }
+      ]
+    },
+    {
+      "number": 1000,
+      "id": "I_kwDOAHsHi84_lE3V",
+      "title": "Were RFC 7540 priority signals ever supposed to be bidirectional?",
+      "url": "https://github.com/httpwg/http2-spec/issues/1000",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Apologies for raising this here and now but here we go.\r\n\r\nBased on feedback from our AD and now directorate reviews of draft-ietf-httpbis-priority, it seems that RFC 7540 and 7540bis are ambiguos about whether priority signals are supposed to be sent and processed in the client-to-server only, or whether they can also be in the server-to-client direction. Bob says this question was unanswered in his original review of RFC 7540 - https://lists.w3.org/Archives/Public/ietf-http-wg/2015JanMar/0529.html\r\n\r\nThe first para of [Section 5.3](https://datatracker.ietf.org/doc/html/rfc7540#section-5.3) says\r\n\r\n> A client can assign a priority for a new stream by including\r\n   prioritization information in the HEADERS frame (Section 6.2) that\r\n   opens the stream.  At any other time, the PRIORITY frame\r\n   (Section 6.3) can be used to change the priority of a stream.\r\n   \r\nBut beyond that there isn't really anything else. In contrast, server push is clearly server-to-client, there's the requirement\r\n\r\n> Thus, servers MUST treat the receipt of a\r\n   PUSH_PROMISE frame as a connection error (Section 5.4.1) of type\r\n   PROTOCOL_ERROR.\r\n   \r\nThe reason I'm asking is because we wrote draft-ietf-httpbis-priority assuming that signals were client-to-server only, and that is causing a few sharp edges that are hard to resolve without a conclusive answer. FWIW, I've never heard of active use of signals in the server-to-client direction.\r\n\r\n",
+      "createdAt": "2021-11-30T01:30:10Z",
+      "updatedAt": "2021-11-30T10:42:04Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think your assessment is right: RFC 7540 allows both peers to send PRIORITY frames and leaves it entirely unspecified what that might mean. Servers reprioritising streams is not terribly useful, so no-one did. There's no contradictions here: RFC 7540 makes it clear that prioritisation is advisory and peers can choose what they do with it, and in all cases clients have effectively chosen to ignore prioritisation signals from servers. I believe this is reasonable.\r\n\r\nFor my part, I don't see any value in _keeping_ this functionality, not least because it never did anything sensible anyway.",
+          "createdAt": "2021-11-30T10:42:04Z",
+          "updatedAt": "2021-11-30T10:42:04Z"
         }
       ]
     }
