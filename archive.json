@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-02T01:01:59.008687+00:00",
+  "timestamp": "2021-12-07T01:04:56.008946+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -20567,7 +20567,7 @@
       "labels": [],
       "body": "Apologies for raising this here and now but here we go.\r\n\r\nBased on feedback from our AD and now directorate reviews of draft-ietf-httpbis-priority, it seems that RFC 7540 and 7540bis are ambiguos about whether priority signals are supposed to be sent and processed in the client-to-server only, or whether they can also be in the server-to-client direction. Bob says this question was unanswered in his original review of RFC 7540 - https://lists.w3.org/Archives/Public/ietf-http-wg/2015JanMar/0529.html\r\n\r\nThe first para of [Section 5.3](https://datatracker.ietf.org/doc/html/rfc7540#section-5.3) says\r\n\r\n> A client can assign a priority for a new stream by including\r\n   prioritization information in the HEADERS frame (Section 6.2) that\r\n   opens the stream.  At any other time, the PRIORITY frame\r\n   (Section 6.3) can be used to change the priority of a stream.\r\n   \r\nBut beyond that there isn't really anything else. In contrast, server push is clearly server-to-client, there's the requirement\r\n\r\n> Thus, servers MUST treat the receipt of a\r\n   PUSH_PROMISE frame as a connection error (Section 5.4.1) of type\r\n   PROTOCOL_ERROR.\r\n   \r\nThe reason I'm asking is because we wrote draft-ietf-httpbis-priority assuming that signals were client-to-server only, and that is causing a few sharp edges that are hard to resolve without a conclusive answer. FWIW, I've never heard of active use of signals in the server-to-client direction.\r\n\r\n",
       "createdAt": "2021-11-30T01:30:10Z",
-      "updatedAt": "2021-11-30T10:42:04Z",
+      "updatedAt": "2021-12-06T18:58:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -20576,6 +20576,27 @@
           "body": "I think your assessment is right: RFC 7540 allows both peers to send PRIORITY frames and leaves it entirely unspecified what that might mean. Servers reprioritising streams is not terribly useful, so no-one did. There's no contradictions here: RFC 7540 makes it clear that prioritisation is advisory and peers can choose what they do with it, and in all cases clients have effectively chosen to ignore prioritisation signals from servers. I believe this is reasonable.\r\n\r\nFor my part, I don't see any value in _keeping_ this functionality, not least because it never did anything sensible anyway.",
           "createdAt": "2021-11-30T10:42:04Z",
           "updatedAt": "2021-11-30T10:42:04Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So I think it's fair to say the wire format allows server-to-client priority signals but they, to our collective knowledge, were never applied to anything. RFC 7540 does a poor job of explaining what such signals would apply to, so its little surprise.\r\n\r\n7540bis leaves details of applying stream priority to RFC 7540. That seems fine.\r\n\r\nSo perhaps what we could do is in RFC 7540bis is add some text around https://httpwg.org/http2-spec/draft-ietf-httpbis-http2bis.html#section-5.3.1-2 like \"priority signals from server to client were supported but implementations did not use this feature\".",
+          "createdAt": "2021-12-06T15:21:03Z",
+          "updatedAt": "2021-12-06T15:21:03Z"
+        },
+        {
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm not sure we should add any text at all. I don't think we need to list every way in which 7540 priority failed: it did, and we have removed all the relevant text relating to it. It seems a bit strange to try to provide guidance on how to use a feature we're asking implementers not to use.",
+          "createdAt": "2021-12-06T17:49:09Z",
+          "updatedAt": "2021-12-06T17:49:09Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "That's up to you as editors. What I can say though is that this quirk exists and we've had several rounds of review of priorities that asked us to stop casting shade on HTTP/2 so we can't talk about it in draft-ietf-httpbis-priority :wink: . Because you've chosen to eliminate the text about how to act on the signals (deferring back to RFC 7540) then there is no other way to address that quirk, and I'll just have to point people at this issue in future.",
+          "createdAt": "2021-12-06T18:57:40Z",
+          "updatedAt": "2021-12-06T18:58:22Z"
         }
       ]
     }
