@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-07T01:04:56.008946+00:00",
+  "timestamp": "2021-12-09T01:03:14.354451+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -20560,15 +20560,15 @@
       "id": "I_kwDOAHsHi84_lE3V",
       "title": "Were RFC 7540 priority signals ever supposed to be bidirectional?",
       "url": "https://github.com/httpwg/http2-spec/issues/1000",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "LPardue",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Apologies for raising this here and now but here we go.\r\n\r\nBased on feedback from our AD and now directorate reviews of draft-ietf-httpbis-priority, it seems that RFC 7540 and 7540bis are ambiguos about whether priority signals are supposed to be sent and processed in the client-to-server only, or whether they can also be in the server-to-client direction. Bob says this question was unanswered in his original review of RFC 7540 - https://lists.w3.org/Archives/Public/ietf-http-wg/2015JanMar/0529.html\r\n\r\nThe first para of [Section 5.3](https://datatracker.ietf.org/doc/html/rfc7540#section-5.3) says\r\n\r\n> A client can assign a priority for a new stream by including\r\n   prioritization information in the HEADERS frame (Section 6.2) that\r\n   opens the stream.  At any other time, the PRIORITY frame\r\n   (Section 6.3) can be used to change the priority of a stream.\r\n   \r\nBut beyond that there isn't really anything else. In contrast, server push is clearly server-to-client, there's the requirement\r\n\r\n> Thus, servers MUST treat the receipt of a\r\n   PUSH_PROMISE frame as a connection error (Section 5.4.1) of type\r\n   PROTOCOL_ERROR.\r\n   \r\nThe reason I'm asking is because we wrote draft-ietf-httpbis-priority assuming that signals were client-to-server only, and that is causing a few sharp edges that are hard to resolve without a conclusive answer. FWIW, I've never heard of active use of signals in the server-to-client direction.\r\n\r\n",
       "createdAt": "2021-11-30T01:30:10Z",
-      "updatedAt": "2021-12-06T18:58:22Z",
-      "closedAt": null,
+      "updatedAt": "2021-12-09T00:19:10Z",
+      "closedAt": "2021-12-08T23:19:14Z",
       "comments": [
         {
           "author": "Lukasa",
@@ -20597,6 +20597,34 @@
           "body": "That's up to you as editors. What I can say though is that this quirk exists and we've had several rounds of review of priorities that asked us to stop casting shade on HTTP/2 so we can't talk about it in draft-ietf-httpbis-priority :wink: . Because you've chosen to eliminate the text about how to act on the signals (deferring back to RFC 7540) then there is no other way to address that quirk, and I'll just have to point people at this issue in future.",
           "createdAt": "2021-12-06T18:57:40Z",
           "updatedAt": "2021-12-06T18:58:22Z"
+        },
+        {
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "For my part I think it's fine to leave this quirk unaddressed. We don't need to add text to revisions of a spec to address all possible behaviours in no-longer-specified protocol features. In RFC 7540, priority signals from servers to clients were unspecified. In 7540-bis, they're still unspecified, and so are 7540-style priority signals from clients to servers. Arguably we've harmonised things \ud83d\ude09 ",
+          "createdAt": "2021-12-08T19:11:05Z",
+          "updatedAt": "2021-12-08T19:11:05Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I can live with this outcome, close at your discretion.",
+          "createdAt": "2021-12-08T19:20:29Z",
+          "updatedAt": "2021-12-08T19:20:29Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I share Cory's view.  We're moving on.\r\n\r\nThere is some cause to talk about the value of server-to-intermediary signals, but I think that the priority draft does that well.  Much better than RFC 7540 did.",
+          "createdAt": "2021-12-08T23:19:14Z",
+          "updatedAt": "2021-12-08T23:19:14Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "NONE",
+          "body": "I agree to the consensus.\r\n\r\nFWIW, it is my understanding that RFC 7540 explicitly _allows_ servers send PRIORITY_UPDATE frames. Quoting from section 5.1:\r\n* _(in reserved (local)), an endpoint MUST NOT send any type of frame other than HEADERS, RST_STREAM, or PRIORITY_\r\n* _In the absence of more specific guidance elsewhere in this document, implementations SHOULD treat the receipt of a frame that is not expressly permitted in the description of a state as a connection error (Section 5.4.1) of type PROTOCOL_ERROR. Note that PRIORITY can be sent and received in any stream state._\r\n\r\nTo maintain wire compatibility with RFC 7540, the only path forward, as we seem to agree, is to continue allowing servers send PRIORITY frames.",
+          "createdAt": "2021-12-09T00:19:10Z",
+          "updatedAt": "2021-12-09T00:19:10Z"
         }
       ]
     }
@@ -42114,6 +42142,95 @@
           "createdAt": "2021-11-29T06:55:35Z",
           "updatedAt": "2021-11-29T06:55:35Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 1001,
+      "id": "PR_kwDOAHsHi84ves2y",
+      "title": "Sean's SECDIR review",
+      "url": "https://github.com/httpwg/http2-spec/pull/1001",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "I'll need to respond via email, but these changes all seem fine.  I'm less sure about the first one than the others though, so look at that carefully.  I'm equally happy pushing back on that; Sean is right that this is probably the most important factoid in the text, but the reordering is a little awkward.",
+      "createdAt": "2021-12-07T06:00:53Z",
+      "updatedAt": "2021-12-07T10:17:29Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "a92cd7940c3996c18042cde84346454bee28e7f8",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "sean-secdir",
+      "headRefOid": "34dfb52cd15d13df42aae23aaab68c6d5e302574",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for the review; I've tried your suggestion.  It seems to work.",
+          "createdAt": "2021-12-07T10:17:29Z",
+          "updatedAt": "2021-12-07T10:17:29Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOAHsHi84xLVdN",
+          "commit": {
+            "abbreviatedOid": "1a5b61a"
+          },
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-07T10:05:56Z",
+          "updatedAt": "2021-12-07T10:11:26Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "The last sentence here isn't right: it reads: \"These URIs do not include any indication about what versions an upstream server supports HTTP/2\".\r\n\r\nConsider:\r\n\r\n- \"These URIs do not include any indication about what HTTP versions an upstream server supports.\"",
+              "createdAt": "2021-12-07T10:06:56Z",
+              "updatedAt": "2021-12-07T10:11:26Z"
+            },
+            {
+              "originalPosition": 29,
+              "body": "I think moving this down is fine but this paragraph now reads a bit strangely. It feels like a dangling paragraph fragment, like we wanted to put this information in somewhere but couldn't find anywhere good so we jammed it here. Which I guess is accurate, but I'd like to be able to hide that.\r\n\r\nWe have defined the term \"client\" in the glossary above, so we don't need to redefine it here. If we want we can move the \"TCP connection initiator\" piece up to the glossary too. We could then move the \"application-layer protocol running on top of a TCP connection\" up to the overview. WDYT?",
+              "createdAt": "2021-12-07T10:10:07Z",
+              "updatedAt": "2021-12-07T10:11:26Z"
+            },
+            {
+              "originalPosition": 54,
+              "body": "Was the decent here intentional?",
+              "createdAt": "2021-12-07T10:10:36Z",
+              "updatedAt": "2021-12-07T10:11:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOAHsHi84xLYvd",
+          "commit": {
+            "abbreviatedOid": "34dfb52"
+          },
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-07T10:17:18Z",
+          "updatedAt": "2021-12-07T10:17:19Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "The indent was poor before, but I \"fixed\" it when reflowing the text.",
+              "createdAt": "2021-12-07T10:17:19Z",
+              "updatedAt": "2021-12-07T10:17:19Z"
+            }
+          ]
         }
       ]
     }
