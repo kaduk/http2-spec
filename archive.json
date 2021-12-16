@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-09T01:03:14.354451+00:00",
+  "timestamp": "2021-12-16T01:03:05.143119+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -42231,6 +42231,56 @@
               "updatedAt": "2021-12-07T10:17:19Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 1002,
+      "id": "PR_kwDOAHsHi84v5lcX",
+      "title": "Add 0x to Frame layout diagrams for consistency",
+      "url": "https://github.com/httpwg/http2-spec/pull/1002",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "editorial"
+      ],
+      "body": "This stems from the IESG review of the priorities draft, where \u00c9ric Vyncke noted the inconsistenc between prose and diagram. This change to use 0x throughout makes it consistent with HTTP/3, which helps documents that need to define frames for both versions.",
+      "createdAt": "2021-12-15T16:11:14Z",
+      "updatedAt": "2021-12-15T21:11:50Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "a92cd7940c3996c18042cde84346454bee28e7f8",
+      "headRepository": "LPardue/http2-spec",
+      "headRefName": "patch-3",
+      "headRefOid": "8a47280f69773b32c3ccb01a47af90ad9392f686",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "LPardue",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "You can theoretically take them up until the RFC is published, with vary layers of pain. Since this was caught in our IESG review, it's likely to come up in yours. \r\n\r\nYour editor discretion on merging this change of course.",
+          "createdAt": "2021-12-15T21:11:50Z",
+          "updatedAt": "2021-12-15T21:11:50Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOAHsHi84xrKye",
+          "commit": {
+            "abbreviatedOid": "8a47280"
+          },
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "This LGTM, but I'll let @martinthomson confirm that we're still happy to take editorial changes at this time.",
+          "createdAt": "2021-12-15T21:02:07Z",
+          "updatedAt": "2021-12-15T21:02:07Z",
+          "comments": []
         }
       ]
     }
