@@ -4,7 +4,7 @@
 
 HTTPbis                                                  M. Thomson, Ed.
 Internet-Draft                                                   Mozilla
-Obsoletes: 7540, 7541, 8740 (if approved)               C. Benfield, Ed.
+Obsoletes: 7540, 8740 (if approved)                     C. Benfield, Ed.
 Intended status: Standards Track                              Apple Inc.
 Expires: 27 June 2022                                   24 December 2021
 
@@ -20,7 +20,7 @@ Abstract
    resources and a reduced latency by introducing field compression and
    allowing multiple concurrent exchanges on the same connection.
 
-   This document obsoletes RFC 7540 and RFC 8740.  It updates RFC 7541.
+   This document obsoletes RFC 7540 and RFC 8740.
 
 Discussion Venues
 
@@ -206,7 +206,6 @@ Table of Contents
    through use of binary message framing.
 
    This document obsoletes RFC 7540 [RFC7540] and RFC 8740 [RFC8740].
-   An update to RFC 7541 [COMPRESSION] is contained in Section 4.3.1.
 
 2.  HTTP/2 Protocol Overview
 
@@ -622,36 +621,31 @@ Table of Contents
    state that is used for field compression.
 
    The dynamic table has a maximum size that is set by a decoder using
-   the SETTINGS_HEADER_TABLE_SIZE setting; see Section 6.5.2.  The
-   encoder can set the dynamic table to any size up to the maximum value
-   set by the decoder.  The encoder declares the size of the dynamic
-   table with a Dynamic Table Size Update instruction (Section 6.3 of
-   [COMPRESSION]).  The encoder at both client and server is initialized
-   with a dynamic table size of 4,096 bytes, the initial value of the
+   the SETTINGS_HEADER_TABLE_SIZE setting; see Section 6.5.2.  Any
+   change to the maximum value set by the decoder takes effect when the
+   encoder acknowledges settings (Section 6.5.3).  The encoder can set
+   the dynamic table to any size up to the maximum value set by the
+   decoder.  The encoder declares the size of the dynamic table with a
+   Dynamic Table Size Update instruction (Section 6.3 of [COMPRESSION]).
+   The encoder at both client and server is initialized with a dynamic
+   table size of 4,096 bytes, the initial value of the
    SETTINGS_HEADER_TABLE_SIZE setting.
-
-   Any change to the maximum value set by the decoder takes effect when
-   the encoder acknowledges settings (Section 6.5.3), followed by a
-   Dynamic Table Size Update instruction.
 
    If a change to SETTINGS_HEADER_TABLE_SIZE reduces the maximum below
    the current size of the dynamic table, the encoder MUST start the
    next field block with a Dynamic Table Size Update instruction that
    sets the dynamic table to a size that is less than or equal to the
-   reduced maximum.  A decoder MUST treat a field block without a
-   sufficiently small Dynamic Table Size Update instruction that follows
-   an acknowledgment of a reduction of SETTINGS_HEADER_TABLE_SIZE as a
-   connection error (Section 5.4.1) of type COMPRESSION_ERROR.
+   reduced maximum; see Section 4.2 of [COMPRESSION].  A decoder MUST
+   treat a field block without a sufficiently small Dynamic Table Size
+   Update instruction that follows an acknowledgment of a reduction of
+   SETTINGS_HEADER_TABLE_SIZE as a connection error (Section 5.4.1) of
+   type COMPRESSION_ERROR.
 
-      |  Implementers are advised that support for reducing the value of
-      |  SETTINGS_HEADER_TABLE_SIZE is not interoperable.  This includes
-      |  use of the connection preface to reduce the value below the
-      |  initial value of 4,096.
-
-   This differs from the requirement in Section 4.2 of [COMPRESSION] as
-   it allows an encoder to omit the instruction if the dynamic table
-   size does not change.  Experience with deployed implementations shows
-   that this is more interoperable.
+      |  Implementers are advised that reducing the value of
+      |  SETTINGS_HEADER_TABLE_SIZE is not widely interoperable.  Use of
+      |  the connection preface to reduce the value below the initial
+      |  value of 4,096 is somewhat better supported, but this might
+      |  fail with some implementations.
 
 5.  Streams and Multiplexing
 
