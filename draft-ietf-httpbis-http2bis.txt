@@ -4056,8 +4056,7 @@ Appendix A.  Prohibited TLS 1.2 Cipher Suites
 
 Appendix B.  Changes from RFC 7540
 
-   This revision includes a number of editorial updates, plus the
-   following substantive changes:
+   This revision includes the following substantive changes:
 
    *  Use of TLS 1.3 was defined based on RFC 8740, which this document
       obsoletes.
@@ -4087,6 +4086,10 @@ Appendix B.  Changes from RFC 7540
       more precisely and comprehensively identified.
 
    *  Host and :authority are no longer permitted to disagree.
+
+   Editorial changes are also included.  In particular, changes to
+   terminology and document structure are in response to updates to core
+   HTTP semantics [HTTP].
 
 Contributors
 
