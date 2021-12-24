@@ -1270,7 +1270,7 @@ Table of Contents
 
    DATA Frame {
      Length (24),
-     Type (8) = 0,
+     Type (8) = 0x0,
 
      Unused Flags (4),
      PADDED Flag (1),
@@ -1345,7 +1345,7 @@ Table of Contents
 
    HEADERS Frame {
      Length (24),
-     Type (8) = 1,
+     Type (8) = 0x1,
 
      Unused Flags (2),
      PRIORITY Flag (1),
@@ -1448,7 +1448,7 @@ Table of Contents
 
    PRIORITY Frame {
      Length (24),
-     Type (8) = 2,
+     Type (8) = 0x2,
 
      Unused Flags (8),
 
@@ -1496,7 +1496,7 @@ Table of Contents
 
    RST_STREAM Frame {
      Length (24),
-     Type (8) = 3,
+     Type (8) = 0x3,
 
      Unused Flags (8),
 
@@ -1596,7 +1596,7 @@ Table of Contents
 
    SETTINGS Frame {
      Length (24),
-     Type (8) = 4,
+     Type (8) = 0x4,
 
      Unused Flags (7),
      ACK Flag (1),
@@ -1726,7 +1726,7 @@ Table of Contents
 
    PUSH_PROMISE Frame {
      Length (24),
-     Type (8) = 5,
+     Type (8) = 0x5,
 
      Unused Flags (4),
      PADDED Flag (1),
@@ -1846,7 +1846,7 @@ Table of Contents
 
    PING Frame {
      Length (24),
-     Type (8) = 6,
+     Type (8) = 0x6,
 
      Unused Flags (7),
      ACK Flag (1),
@@ -1934,7 +1934,7 @@ Table of Contents
 
    GOAWAY Frame {
      Length (24),
-     Type (8) = 7,
+     Type (8) = 0x7,
 
      Unused Flags (8),
 
@@ -2053,7 +2053,7 @@ Table of Contents
 
    WINDOW_UPDATE Frame {
      Length (24),
-     Type (8) = 8,
+     Type (8) = 0x8,
 
      Unused Flags (8),
 
@@ -2218,7 +2218,7 @@ Table of Contents
 
    CONTINUATION Frame {
      Length (24),
-     Type (8) = 9,
+     Type (8) = 0x9,
 
      Unused Flags (5),
      END_HEADERS Flag (1),

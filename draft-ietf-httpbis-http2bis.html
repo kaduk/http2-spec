@@ -2863,7 +2863,7 @@ HTTP Frame {
 <pre>
 DATA Frame {
   Length (24),
-  Type (8) = 0,
+  Type (8) = 0x0,
 
   Unused Flags (4),
   PADDED Flag (1),
@@ -2963,7 +2963,7 @@ DATA Frame {
 <pre>
 HEADERS Frame {
   Length (24),
-  Type (8) = 1,
+  Type (8) = 0x1,
 
   Unused Flags (2),
   PRIORITY Flag (1),
@@ -3107,7 +3107,7 @@ HEADERS Frame {
 <pre>
 PRIORITY Frame {
   Length (24),
-  Type (8) = 2,
+  Type (8) = 0x2,
 
   Unused Flags (8),
 
@@ -3172,7 +3172,7 @@ PRIORITY Frame {
 <pre>
 RST_STREAM Frame {
   Length (24),
-  Type (8) = 3,
+  Type (8) = 0x3,
 
   Unused Flags (8),
 
@@ -3279,7 +3279,7 @@ RST_STREAM Frame {
 <pre>
 SETTINGS Frame {
   Length (24),
-  Type (8) = 4,
+  Type (8) = 0x4,
 
   Unused Flags (7),
   ACK Flag (1),
@@ -3458,7 +3458,7 @@ Setting {
 <pre>
 PUSH_PROMISE Frame {
   Length (24),
-  Type (8) = 5,
+  Type (8) = 0x5,
 
   Unused Flags (4),
   PADDED Flag (1),
@@ -3604,7 +3604,7 @@ PUSH_PROMISE Frame {
 <pre>
 PING Frame {
   Length (24),
-  Type (8) = 6,
+  Type (8) = 0x6,
 
   Unused Flags (7),
   ACK Flag (1),
@@ -3696,7 +3696,7 @@ PING Frame {
 <pre>
 GOAWAY Frame {
   Length (24),
-  Type (8) = 7,
+  Type (8) = 0x7,
 
   Unused Flags (8),
 
@@ -3813,7 +3813,7 @@ GOAWAY Frame {
 <pre>
 WINDOW_UPDATE Frame {
   Length (24),
-  Type (8) = 8,
+  Type (8) = 0x8,
 
   Unused Flags (8),
 
@@ -3980,7 +3980,7 @@ WINDOW_UPDATE Frame {
 <pre>
 CONTINUATION Frame {
   Length (24),
-  Type (8) = 9,
+  Type (8) = 0x9,
 
   Unused Flags (5),
   END_HEADERS Flag (1),
