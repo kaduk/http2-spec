@@ -7,6 +7,13 @@ View [saved issues](issues.html), or the latest GitHub [issues](https://github.c
 | [HPACK](./draft-ietf-httpbis-header-compression.html) | [plain text](./draft-ietf-httpbis-header-compression.txt) | [datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-header-compression) | [diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-header-compression&amp;url2=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt) |  |
 | [HTTP/2](./draft-ietf-httpbis-http2bis.html) | [plain text](./draft-ietf-httpbis-http2bis.txt) | [datatracker](https://datatracker.ietf.org/doc/draft-ietf-httpbis-http2bis) | [diff with last submission](https://www.ietf.org/rfcdiff?url1=draft-ietf-httpbis-http2bis&amp;url2=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt) |  |
 
+## Preview for branch [initial-table-size](initial-table-size)
+
+| Draft |     |     |     |
+| ----- | --- | --- | --- |
+| [HPACK](initial-table-size/draft-ietf-httpbis-header-compression.html) | [plain text](initial-table-size/draft-ietf-httpbis-header-compression.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-header-compression.txt&amp;url2=https://httpwg.github.io/http2-spec/initial-table-size/draft-ietf-httpbis-header-compression.txt) |
+| [HTTP/2](initial-table-size/draft-ietf-httpbis-http2bis.html) | [plain text](initial-table-size/draft-ietf-httpbis-http2bis.txt) | [diff with main](https://www.ietf.org/rfcdiff?url1=https://httpwg.github.io/http2-spec/draft-ietf-httpbis-http2bis.txt&amp;url2=https://httpwg.github.io/http2-spec/initial-table-size/draft-ietf-httpbis-http2bis.txt) |
+
 ## Preview for branch [idle-closed](idle-closed)
 
 | Draft |     |     |     |
