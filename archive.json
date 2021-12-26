@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-16T01:03:05.143119+00:00",
+  "timestamp": "2021-12-26T01:08:46.895315+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -20520,31 +20520,39 @@
       "id": "I_kwDOAHsHi84-mpa9",
       "title": "AD review of draft-ietf-httpbis-http2bis-05",
       "url": "https://github.com/httpwg/http2-spec/issues/974",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "fpalombini",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "- [x] 1. -----\r\n\r\nFP: Is the working group aware that RFC 793bis is in IESG evaluation (https://datatracker.ietf.org/doc/draft-ietf-tcpm-rfc793bis/) ? Was the choice of having a normative reference to 793 conscious, in order to avoid any delay that might come from publication of draft-ietf-tcpm-rfc793bis? (Just checking this was considered)\r\n\r\n- [x] 2. -----\r\n\r\n   for HTTP/2 over TLS.  The general TLS usage guidance in [TLSBCP]\r\n   SHOULD be followed, with some additional restrictions that are\r\n   specific to HTTP/2.\r\n\r\nFP: Given this requirement, I would have expected to see [TLSBCP] normatively referenced, rather than informatively.\r\n\r\n- [x] 3. -----\r\n\r\n   layer.  The frame and stream layers are tailored to the needs of the\r\n   HTTP protocol and server push.\r\n\r\nFP: I would think the server push is part of the HTTP protocol, which makes this formulation \"HTTP protocol and server push\" confusing.\r\n\r\n- [x] 4. -----\r\n\r\n   Type:  The 8-bit type of the frame.  The frame type determines the\r\n\r\n   Flags:  An 8-bit field reserved for boolean flags specific to the\r\n\r\nFP: I would find a reference to the IANA registry useful.\r\n\r\n- [x] 5. -----\r\n\r\n   implementation of flow control can be difficult.  When using flow\r\n   control, the receiver MUST read from the TCP receive buffer in a\r\n   timely fashion.  Failure to do so could lead to a deadlock when\r\n\r\nFP: \"When using flow control\" might be rephrased to indicate \"when flow control limits are lower than the maximum\" (or something of the sort), since if I understand correctly the capability is always used, it is just the window size that changes (effectively implementing control of flow). Also \"timely fashion\" - I know that it is probably hard, but it would be nice to have a more precise qualification, or at least a hint of what is timely.\r\n\r\n- [x] 6. -----\r\n\r\n   stream that it successfully received from its peer.  The GOAWAY frame\r\n   includes an error code that indicates why the connection is\r\n\r\nFP: \"error code\" - here as well I would have liked a reference to the IANA registry.\r\n\r\n- [x] 7. -----\r\n\r\n   Exclusive:  A single-bit flag.  This field is only present if the\r\n      PRIORITY flag is set.\r\n\r\n   Stream Dependency:  A 31-bit stream identifier.  This field is only\r\n      present if the PRIORITY flag is set.\r\n\r\n   Weight:  An unsigned 8-bit integer.  This field is only present if\r\n      the PRIORITY flag is set.\r\n\r\nFP: I would have expected to see some definition of how the fields are used. If this is defined somewhere else, a reference would be good.\r\n\r\n- [x] 8. -----\r\n\r\n   SETTINGS Frame {\r\n     Length (24),\r\n     Type (8) = 4,\r\n\r\n     Unused Flags (7),\r\n     ACK Flag (1),\r\n\r\n     Reserved (1),\r\n     Stream Identifier (31),\r\n\r\n     Setting (48) ...,\r\n   }\r\n\r\n   Setting {\r\n     Identifier (16),\r\n     Value (32),\r\n   }\r\n\r\nFP: Is there any reason why the Stream Identifier line is not:\r\n     Stream Identifier (31) = 0,\r\n\r\n- [x] 9. -----\r\n\r\n      a server does include a value it MUST be 0.  A client MUST treat\r\n      receipt of a SETTINGS frame with SETTINGS_ENABLE_PUSH set to 1 as\r\n      a connection error (Section 5.4.1) of type PROTOCOL_ERROR.\r\n\r\nFP: This is just my curiosity: what is the reason for this stronger requirement - I would think it shouldn't be a problem for the sender if it wants to advertise that it would permit/support server push. What am I missing? \r\n\r\n- [x] 10. -----\r\n\r\n      A value of 0 for SETTINGS_MAX_CONCURRENT_STREAMS SHOULD NOT be\r\n      treated as special by endpoints.  A zero value does prevent the\r\n\r\nFP: When is it ok that the 0 value is treated as special?\r\n\r\n- [x] 11. -----\r\n\r\n   set.  Upon receiving a SETTINGS frame with the ACK flag set, the\r\n   sender of the altered settings can rely on the value having been\r\n   applied.\r\n\r\nFP: nit s/value/values. Also I believe this could be misunderstood - can it be made more precise on the fact that only the values that are present in the received frame with the ACK flag set (and not those that might have been ignored because not understood) have been applied.\r\n\r\n- [x] 12. -----\r\n\r\n   A receiver MUST treat the receipt of a WINDOW_UPDATE frame with an\r\n   flow-control window increment of 0 as a stream error (Section 5.4.2)\r\n\r\nFP: nit s/an/a\r\n\r\n- [x] 13. -----\r\n\r\n   FLOW_CONTROL_ERROR (0x3):  The endpoint detected that its peer\r\n      violated the flow-control protocol.\r\n\r\n   STREAM_CLOSED (0x5):  The endpoint received a frame after a stream\r\n      was half-closed.\r\n\r\nFP: would be good to add a reference to the relevant sections.\r\n\r\n- [x] 14. -----\r\n\r\n   set after receiving the HEADERS frame that opens a request or after\r\n   receiving a final (non-informational) status code MUST treat the\r\n\r\nFP: Where is a \"non-informational status code\" defined?\r\n\r\n- [x] 15. -----\r\n\r\nFP: Are the following two sentences in Section 8.1.1. in contraddiction?\r\n\r\n   request or response.  Malformed requests or responses that are\r\n   detected MUST be treated as a stream error (Section 5.4.2) of type\r\n   PROTOCOL_ERROR.\r\n\r\n   on the remainder of the request being correct.  A server or\r\n   intermediary MAY use RST_STREAM -- with a code other than\r\n   REFUSED_STREAM -- to abort a stream if a malformed request or\r\n   response is received.\r\n\r\nFP: In section 5.4.2. I read:\r\n\r\n   An endpoint that detects a stream error sends a RST_STREAM frame\r\n\r\nSo the first sentence above implies RST_STREAM MUST be sent, while the second sentence states RST_STREAM MAY be sent.\r\n\r\n- [x] 16. -----\r\n\r\n   their definitions in Sections Section 5.1 of [5.1] and Section 5.5 of\r\n   [5.5] of [HTTP] respectively and treat messages that contain\r\n\r\nFP: References need fixing.\r\n\r\n- [x] 17. -----\r\n\r\n     from the control data of the original request, unless the the\r\n\r\nFP: nit Remove one \"the\"\r\n\r\n- [x] 18. -----\r\n\r\n      Note that request targets for CONNECT or asterisk-form OPTIONS\r\n      requests never include authority information.\r\n\r\nFP: Please add a reference to 7.1 of [HTTP] as this is the first time \"asterisk-form OPTION\" appear in this document.\r\n\r\n- [x] 19. -----\r\n\r\n   Advertising a SETTINGS_MAX_CONCURRENT_STREAMS value of zero disables\r\n   server push by preventing the server from creating the necessary\r\n   streams.  This does not prohibit a server from sending PUSH_PROMISE\r\n   frames; clients need to reset any promised streams that are not\r\n   wanted.\r\n\r\nFP: Do these two sentences contradict each other? In the first sentence I am reading that the server can't create the necessary stream to send the PUSH_PROMISE frame, in the second sentence I read that it can?\r\n\r\n- [x] 20. -----\r\n\r\n   on a DATA frame is treated as being equivalent to the TCP FIN bit.  A\r\n\r\nFP: Can a reference be added to the section where the TCP FIN bit is defined?\r\n\r\n- [x] 21. -----\r\n\r\n     Content-Type: image/jpeg   ==>     - END_STREAM\r\n     Content-Length: 123                + END_HEADERS\r\n\r\nFP: I think it would be good to add a sentence about the meaning of - and + (which I understand to be flag set or not set) in section 2.2.\r\n\r\n- [x] 22. -----\r\n\r\n   treated as delimiters in other HTTP versions.  An intermediary that\r\n   translates an HTTP/2 request or response MUST validate fields\r\n   according to the rules in Section 8.2 roles before translating a\r\n   message to another HTTP version.  Translating a field that includes\r\n\r\nFP: is \"roles\" supposed to be there?\r\n\r\n- [x] 23. -----\r\n\r\n   The CONNECT method can be used to create disproportionate load on an\r\n   proxy, since stream creation is relatively inexpensive when compared\r\n\r\nFP: nit s/an/a\r\n\r\n- [x] 24. -----\r\n\r\nFP: I think it would be good to keep the 3rd paragraph in Section 11 instead of asking the RFC Editor to remove it, just to keep a trace of the registries that have been defined in 7540, since those registries will now reference this document, but this document does not contain all the definitions of the different fields.\r\n\r\n- [x] 25. ----\r\n\r\n   Comments:  Obsolete; see Section 11.1\r\n\r\nFP: I would suggest to be explicit and add \"of this document\" (unless links can be maintained in IANA registries Comments fields).",
       "createdAt": "2021-11-10T21:18:32Z",
-      "updatedAt": "2021-11-18T15:54:10Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2021-12-24T01:03:15Z",
+      "closedAt": "2021-12-24T01:03:15Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "All done, closing.",
+          "createdAt": "2021-12-24T01:03:13Z",
+          "updatedAt": "2021-12-24T01:03:13Z"
+        }
+      ]
     },
     {
       "number": 990,
       "id": "I_kwDOAHsHi84_gfi_",
       "title": "tsvart review from J\u00f6rg Ott",
       "url": "https://github.com/httpwg/http2-spec/issues/990",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "- [x] Section 5.1.1., 3rd para:\r\n\r\n    When a stream transitions out of\r\nthe \"idle\" state, all streams that might have been initiated by that\r\npeer with a lower-valued stream identifier are implicitly\r\ntransitioned to \"closed\". \r\n\r\n    Should one say \"that might have been but were not initiated by that peers\"\r\nto make clear that this applies only to un-used streams?\r\n\r\n- [x] Section 5.3.1\r\nMaybe update the section heading to read\r\n\"Background on Priority in HTTP/2 as per RFC7540\"?\r\n\r\n- [x] Section 6.5:\r\nThe document implies that SETTINGS frames are ACKed in the order they are sent.\r\nShould one make this explicit?\r\n\r\n- [x] Last para of 6.5, top of page 37:\r\n\"If the sender of a SETTINGS frame does not receive an acknowledgement\r\nwithin a reasonable amount of time, it MAY issue a connection error\r\n(Section 5.4.1) of type SETTINGS_TIMEOUT.\"\r\n\r\n    Should one provide some intuition on what \"reasonable\" could mean? An example?\r\nIt seems, an HTTP/2 sender of a SETTINGS frame could know when this was passed\r\nto the TCP layer and may have some insights on application layer RTTs.\r\n\r\n- [x] Section 6.9.1: Concerning flow control, should one say something about avoiding\r\nsilly windows?\r\n\r\n- [x] Section 8.1.1, p52 1st para: Probably just me, but I am mildly confused by the\r\nstatement about messages having a non-zero content-length field but still no\r\ndata in the data frames. The reference section 6.4 of the HTTP semantics draft\r\ndidn't resolve that. \r\n\r\n- [x] Section 8.2.1, p53: parse error?\r\n\"When a request message violates one of these requirements, an\r\nimplementation SHOULD generate a Section 15.5.1 of 400 (Bad Request)\r\nstatus code [HTTP], [...]\"\r\n\r\n- [x] Section 8.4.2, 4th para:\r\n\"A client can use the SETTINGS_MAX_CONCURRENT_STREAMS setting to limit\r\nthe number of responses that can be concurrently pushed by a server.\r\nAdvertising a SETTINGS_MAX_CONCURRENT_STREAMS value of zero disables\r\nserver push by preventing the server from creating the necessary\r\nstreams.  This does not prohibit a server from sending PUSH_PROMISE\r\nframes; clients need to reset any promised streams that are not\r\nwanted. \r\n\r\n    Confused: it disables server push, but the server can send PUSH_PROMISE frames\r\nand then the client is supposed to reset a stream it wasn't willing to accept or\r\ncapable of accepting? Which stream number would the server legitimately put\r\ninto the PUSH_PROMISE?\r\n\r\n- [ ] There are a few cases where I am wondering if normative language should be used.\r\nExamples include\r\n    - [ ] -- 5.4.2, 2nd para, \"sends an RST_STREAM frame\"\r\n    - [x] -- 6.8, p43, 1st para, \"the server can send another GOAWAY\"\r\n    - [ ] -- 6.8, p43, 2nd para, \"the sender can discard frames\"\r\n    - [ ] -- 9.1, 3rd para, \"clients can create\"\r\n    - [ ] There may be further occurrences of \"can\" or similar.",
       "createdAt": "2021-11-29T00:21:17Z",
-      "updatedAt": "2021-11-29T07:01:03Z",
-      "closedAt": null,
+      "updatedAt": "2021-12-24T00:39:35Z",
+      "closedAt": "2021-12-24T00:39:34Z",
       "comments": [
         {
           "author": "Lukasa",
@@ -20552,6 +20560,13 @@
           "body": "FYI @martinthomson I've updated this post to have a list of checkboxes for \"addressed\".",
           "createdAt": "2021-11-29T07:00:24Z",
           "updatedAt": "2021-11-29T07:00:24Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I've reviewed the changes here and I'm happy with 9/14.  The others I don't think need to be addressed.",
+          "createdAt": "2021-12-24T00:39:34Z",
+          "updatedAt": "2021-12-24T00:39:34Z"
         }
       ]
     },
@@ -20627,6 +20642,22 @@
           "updatedAt": "2021-12-09T00:19:10Z"
         }
       ]
+    },
+    {
+      "number": 1004,
+      "id": "I_kwDOAHsHi85A2kY1",
+      "title": "Excess use of Dynamic Table Size Update introduced in #1003",
+      "url": "https://github.com/httpwg/http2-spec/issues/1004",
+      "state": "OPEN",
+      "author": "kazuho",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Opening a new issue as I notice that #1003 has been merged already.\r\n\r\nText added by #1003 states: _An encoder sends a Dynamic Table Size Update instruction after acknowledging a change of SETTINGS_HEADER_TABLE_SIZE even if it is not changing the size of the dynamic table or an increase to the maximum size is subsequently reverted before the field block is sent_.\r\n\r\nI am not sure if this correct interpretation of RFC 7541, and also am concerned that this text might cause new interoperability issues.\r\n\r\n[RFC 7541 section 4.2](https://httpwg.org/specs/rfc7541.html#maximum.table.size) states: _A change in the maximum size of the dynamic table is signaled via a dynamic table size update (see Section 6.3). This dynamic table size update MUST occur at the beginning of the first header block following the change to the dynamic table size. In HTTP/2, this follows a settings acknowledgment (see Section 6.5.3 of [HTTP2])._\r\n\r\nAs can be seen, this paragraph of RFC 7541 starts \"a change.\" When an HTTP/2 endpoint is using an HPACK encoder with a dynamic table of size 4,096 (the default) and receives SETTINGS_MAX_HEADER_LIST_SIZE of 4096, it is not changing the size of the dynamic table. My interpretation of RFC 7541 would be that it does not require Dynamic Table Update Size to be sent when the table size remains the same.\r\n\r\nInteroperability-wise, do existing servers respond with a Dynamic Table Update Size instruction when the client sends SETTINGS_MAX_HEADER_LIST_SIZE no less than 4096? It seems to me that this newly added text suggest such behavior is required, but I'm not sure if many servers behave as such. #1003 added text indicating that endpoints MAY error-close the connection when not seeing such behavior. Even if we are to agree that Dynamic Table Size Update MUST be sent in all cases, I'm concerned that we might see more interoperability issues by suggesting that endpoints can error-close.",
+      "createdAt": "2021-12-23T23:45:09Z",
+      "updatedAt": "2021-12-24T00:11:13Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -41626,7 +41657,7 @@
       "id": "PR_kwDOAHsHi84u4N7H",
       "title": "Updates to -semantics are important",
       "url": "https://github.com/httpwg/http2-spec/pull/989",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "martinthomson",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -41635,17 +41666,19 @@
       ],
       "body": "Important enough to note in the change log anyway.",
       "createdAt": "2021-11-22T23:02:20Z",
-      "updatedAt": "2021-11-29T01:16:37Z",
+      "updatedAt": "2021-12-24T01:02:49Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "21d73239985424ae6b6b49d4773d13e3361f5531",
       "headRepository": "martinthomson/http2v2",
       "headRefName": "editorial-semantics-cl",
       "headRefOid": "a627e392fc43d8b74649768f0094d4016d3c371e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-12-24T01:02:46Z",
+      "mergedAt": "2021-12-24T01:02:46Z",
+      "mergedBy": "martinthomson",
+      "mergeCommit": {
+        "oid": "8bc9af0c5ef2ecead439160fcdee85f4c94dcefb"
+      },
       "comments": [],
       "reviews": [
         {
@@ -42239,7 +42272,7 @@
       "id": "PR_kwDOAHsHi84v5lcX",
       "title": "Add 0x to Frame layout diagrams for consistency",
       "url": "https://github.com/httpwg/http2-spec/pull/1002",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "LPardue",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -42248,17 +42281,19 @@
       ],
       "body": "This stems from the IESG review of the priorities draft, where \u00c9ric Vyncke noted the inconsistenc between prose and diagram. This change to use 0x throughout makes it consistent with HTTP/3, which helps documents that need to define frames for both versions.",
       "createdAt": "2021-12-15T16:11:14Z",
-      "updatedAt": "2021-12-15T21:11:50Z",
+      "updatedAt": "2021-12-24T01:02:20Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "a92cd7940c3996c18042cde84346454bee28e7f8",
       "headRepository": "LPardue/http2-spec",
       "headRefName": "patch-3",
       "headRefOid": "8a47280f69773b32c3ccb01a47af90ad9392f686",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-12-24T01:02:20Z",
+      "mergedAt": "2021-12-24T01:02:20Z",
+      "mergedBy": "martinthomson",
+      "mergeCommit": {
+        "oid": "0feaaa1723fc884b143638535b22f7ed0b5731cf"
+      },
       "comments": [
         {
           "author": "LPardue",
@@ -42280,6 +42315,157 @@
           "body": "This LGTM, but I'll let @martinthomson confirm that we're still happy to take editorial changes at this time.",
           "createdAt": "2021-12-15T21:02:07Z",
           "updatedAt": "2021-12-15T21:02:07Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 1003,
+      "id": "PR_kwDOAHsHi84wNn9-",
+      "title": "Stricter, clearer rules for Dynamic Table Size Update",
+      "url": "https://github.com/httpwg/http2-spec/pull/1003",
+      "state": "MERGED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As they relate to changes in SETTINGS_HEADER_TABLE_SIZE.\r\n\r\nThis is the strict, by-the-book interpretation.  That is, if the value\r\nchanges, you have to send the update, even if it is pointless (that is,\r\nyou aren't changing the size of the table).\r\n\r\nNote that I'm eliding the point about multiple instructions, which are\r\nnecessary if the decoder reduces the maximum below the current size.\r\nThe only nod in that direction is \"at least one\" and a reference to the\r\nsection that talks about the need for multiple updates.\r\n\r\nThis pulls in more of RFC 7541 than I might have liked, but we have to\r\ndeal with the integration somewhere and this seems like a reasonable\r\nplace to do that.  It might have been better to put this text in a -bis\r\nrevision of RFC 7541, but we decided to leave that document as-is.",
+      "createdAt": "2021-12-23T05:19:00Z",
+      "updatedAt": "2021-12-23T23:45:31Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "a92cd7940c3996c18042cde84346454bee28e7f8",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "initial-table-size",
+      "headRefOid": "f499930deab0300d7ca094a40f680c5fc4a154df",
+      "closedAt": "2021-12-23T12:56:11Z",
+      "mergedAt": "2021-12-23T12:56:11Z",
+      "mergedBy": "Lukasa",
+      "mergeCommit": {
+        "oid": "7741c1eeab28226f0f121a578f9febc250fe67fb"
+      },
+      "comments": [
+        {
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "LGTM, this is a nice clarification that removes the possibility of a different interpretation that's known to have caused interoperability issues (nghttp2 vs haproxy). Let's merge it!",
+          "createdAt": "2021-12-23T06:34:49Z",
+          "updatedAt": "2021-12-23T06:34:49Z"
+        },
+        {
+          "author": "kazuho",
+          "authorAssociation": "NONE",
+          "body": "Oh I see this PR already being merged. Opened #1004.",
+          "createdAt": "2021-12-23T23:45:31Z",
+          "updatedAt": "2021-12-23T23:45:31Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOAHsHi84yBwK9",
+          "commit": {
+            "abbreviatedOid": "f499930"
+          },
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I agree with Willy, this is a really good clarification.",
+          "createdAt": "2021-12-23T12:56:07Z",
+          "updatedAt": "2021-12-23T12:56:07Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOAHsHi84yDEIF",
+          "commit": {
+            "abbreviatedOid": "f499930"
+          },
+          "author": "kazuho",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "I think this PR is in the correct direction.\r\n\r\nEndpoints have to process instructions using dynamic table, even when they advertise SETTINGS_MAX_HEADER_LIST_SIZE of zero. That is because the default is 4096. We did fix this problem in QPACK, but HPACK had already shipped.\r\n\r\nOTOH, I have concerns regarding new text suggesting Dynamic Table Update Size be sent even when there is no change in the size.",
+          "createdAt": "2021-12-23T23:31:18Z",
+          "updatedAt": "2021-12-23T23:33:45Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Is this correct?\r\n\r\nQuoting from [RFC 7541 section 4.2](https://httpwg.org/specs/rfc7541.html#maximum.table.size): _A change in the maximum size of the dynamic table is signaled via a dynamic table size update (see Section 6.3). This dynamic table size update MUST occur at the beginning of the first header block following the change to the dynamic table size. In HTTP/2, this follows a settings acknowledgment (see Section 6.5.3 of [HTTP2])._\r\n\r\nThis paragraph of RFC 7541 starts \"a change,\" but if the an HTTP/2 using an HPACK encoder with a dynamic table of size 4,096 (the default) and receives SETTINGS_MAX_HEADER_LIST_SIZE of 4096, it is not changing the size of the dynamic table.\r\n\r\nInteroperability-wise, do existing servers respond with a Dynamic Table Update Size instruction when the client sends SETTINGS_MAX_HEADER_LIST_SIZE no less than 4096? It seems to me that this newly added text suggest such behavior is required, but I'm not sure if many servers behave as such. Unless we have such confirmation, it would be dangerous to indicate that clients might complain under such circumstance.",
+              "createdAt": "2021-12-23T23:31:18Z",
+              "updatedAt": "2021-12-23T23:35:50Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 1005,
+      "id": "PR_kwDOAHsHi84wP0eO",
+      "title": "Stricter, clearer rules for Dynamic Table Size Update v2",
+      "url": "https://github.com/httpwg/http2-spec/pull/1005",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This reverts commit 290e381719b2fefe4e6182d3be288c48e8f5fd7e.\r\nSee #1003 for most of the discussion.\r\n\r\nThe key change here is to address #1004 by only requiring that the change be signaled when the table size is reduced.  When I dug more into this, it's a more disruptive change, so I've made a bunch of additional changes in support of that.\r\n\r\n",
+      "createdAt": "2021-12-24T00:06:18Z",
+      "updatedAt": "2021-12-24T11:20:22Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "290e381719b2fefe4e6182d3be288c48e8f5fd7e",
+      "headRepository": "httpwg/http2-spec",
+      "headRefName": "initial-table-size",
+      "headRefOid": "0c8ece69b3a95bb0ed678b18d65736a917e29cbc",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I have one suggestion about a point that seems to be possible to infer from all this but is not explicitly written and may condition the sequencing of operations. Do we **want** to support multiple settings updates on this parameter, hence announce in the middle of a communication that we changed our local decoder size ? It seems to me that this is the case but it does not appear in the original text where it more likely sounds like **the** initial size.\r\n\r\nIf we want to support repeated size changes from the decoder, then I agree that it's better to consider that 4096 is initial and that the setting changes it and Kazuho's wording sounds fine. But then it possibly ought to be explicitly mentioned such as:\r\n```\r\n  The decoder table size is preset to 4096 bytes. A decoder may at any time decide\r\n  to change the size of its table. It must then announce the new size using the\r\n  SETTINGS_HEADER_TABLE_SIZE setting, knowing that it will only be effective once\r\n  the SETTINGS frame is acknowledged by its peer. An encoder which observes a table\r\n  size reduction compared to the previously used one MUST announce the new size it\r\n  intends to use via a HPACK Dynamic Table Size Update code carrying a size lower\r\n  than, or equal to the decoder's maximum table size. This also implies that any\r\n  SETTINGS_HEADER_TABLE_SIZE change lower than the last Dynamic Table Size\r\n  Update MUST result in a new valid Dynamic Table Size Update to be emitted by the\r\n  encoder after the setting is acknowledged.\r\n```\r\nThis makes sure that it's safe for an encoder to only process the settings frame once and to send a single DTSU instead of one per SETTINGS frame.\r\n",
+          "createdAt": "2021-12-24T08:20:13Z",
+          "updatedAt": "2021-12-24T08:20:13Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOAHsHi84yDeA3",
+          "commit": {
+            "abbreviatedOid": "0c8ece6"
+          },
+          "author": "kazuho",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "Thank you for the quick work. Description of the mechanism looks correct, my comments below are purely editorial.",
+          "createdAt": "2021-12-24T06:52:32Z",
+          "updatedAt": "2021-12-24T06:57:24Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\n            Once an endpoint acknowledges a change to SETTINGS_HEADER_TABLE_SIZE reducing the maximum below the current size of\r\n```\r\nI understand that the timing is clarified in the paragraph right above, but perhaps it might not hurt to clarify that here as well.",
+              "createdAt": "2021-12-24T06:52:33Z",
+              "updatedAt": "2021-12-24T06:57:24Z"
+            },
+            {
+              "originalPosition": 39,
+              "body": "Can we move this sentence to the top of the paragraph?\r\n\r\nIt might be a good idea to order the sentences in the order things change; i.e., start with 4096 (the initial value of SETTINGS), then state that it changes when SETTINGS is acked.",
+              "createdAt": "2021-12-24T06:55:04Z",
+              "updatedAt": "2021-12-24T06:57:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOAHsHi84yD5Jv",
+          "commit": {
+            "abbreviatedOid": "0c8ece6"
+          },
+          "author": "Lukasa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I'm happy with these changes. In general I like @kazuho's suggestions as well, but I don't have a strong preference as to whether we use those or not.",
+          "createdAt": "2021-12-24T11:20:22Z",
+          "updatedAt": "2021-12-24T11:20:22Z",
           "comments": []
         }
       ]
