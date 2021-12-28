@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-26T01:08:46.895315+00:00",
+  "timestamp": "2021-12-28T01:04:45.972961+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -42408,7 +42408,7 @@
       "labels": [],
       "body": "This reverts commit 290e381719b2fefe4e6182d3be288c48e8f5fd7e.\r\nSee #1003 for most of the discussion.\r\n\r\nThe key change here is to address #1004 by only requiring that the change be signaled when the table size is reduced.  When I dug more into this, it's a more disruptive change, so I've made a bunch of additional changes in support of that.\r\n\r\n",
       "createdAt": "2021-12-24T00:06:18Z",
-      "updatedAt": "2021-12-24T11:20:22Z",
+      "updatedAt": "2021-12-27T06:49:33Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "290e381719b2fefe4e6182d3be288c48e8f5fd7e",
@@ -42467,6 +42467,46 @@
           "createdAt": "2021-12-24T11:20:22Z",
           "updatedAt": "2021-12-24T11:20:22Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOAHsHi84yFDar",
+          "commit": {
+            "abbreviatedOid": "0c8ece6"
+          },
+          "author": "kazuho",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-27T06:23:24Z",
+          "updatedAt": "2021-12-27T06:23:25Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "~~Aside from my comments above, this is incorrect. SETTINGS_MAX_HEADER_LIST_SIZE is merely advisory. Encoders are allowed to ignore the SETTINGS value ([section 10.5.1](https://httpwg.org/http2-spec/draft-ietf-httpbis-http2bis.html#name-limits-on-field-block-size)).~~ Please scratch this comment. It is incorrect as pointed out by @wtarreau (thank you!).",
+              "createdAt": "2021-12-27T06:23:25Z",
+              "updatedAt": "2021-12-27T06:49:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOAHsHi84yFEiy",
+          "commit": {
+            "abbreviatedOid": "0c8ece6"
+          },
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2021-12-27T06:38:57Z",
+          "updatedAt": "2021-12-27T06:38:58Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Warning @kazuho, the part in section 10.5.1 is about uncompressed fields, it only says that it's possible to send fields that are larger than the table size, and that this settings may or may not be used as a hint for such a size limit. I personally don't establish any such relation between maximum field size and headers table size, since HPACK clearly states that trying to store a larger field simply flushes the table, and I think that most implementations will use small tables even is they support large headers. I think the text really focuses on a hint that if an implementation advertises a large table, it's likely that it will also support large fields.",
+              "createdAt": "2021-12-27T06:38:57Z",
+              "updatedAt": "2021-12-27T06:38:58Z"
+            }
+          ]
         }
       ]
     }
