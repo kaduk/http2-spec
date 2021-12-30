@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-28T01:04:45.972961+00:00",
+  "timestamp": "2021-12-30T01:04:24.671028+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -42408,7 +42408,7 @@
       "labels": [],
       "body": "This reverts commit 290e381719b2fefe4e6182d3be288c48e8f5fd7e.\r\nSee #1003 for most of the discussion.\r\n\r\nThe key change here is to address #1004 by only requiring that the change be signaled when the table size is reduced.  When I dug more into this, it's a more disruptive change, so I've made a bunch of additional changes in support of that.\r\n\r\n",
       "createdAt": "2021-12-24T00:06:18Z",
-      "updatedAt": "2021-12-27T06:49:33Z",
+      "updatedAt": "2021-12-29T00:46:54Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "290e381719b2fefe4e6182d3be288c48e8f5fd7e",
@@ -42426,6 +42426,13 @@
           "body": "I have one suggestion about a point that seems to be possible to infer from all this but is not explicitly written and may condition the sequencing of operations. Do we **want** to support multiple settings updates on this parameter, hence announce in the middle of a communication that we changed our local decoder size ? It seems to me that this is the case but it does not appear in the original text where it more likely sounds like **the** initial size.\r\n\r\nIf we want to support repeated size changes from the decoder, then I agree that it's better to consider that 4096 is initial and that the setting changes it and Kazuho's wording sounds fine. But then it possibly ought to be explicitly mentioned such as:\r\n```\r\n  The decoder table size is preset to 4096 bytes. A decoder may at any time decide\r\n  to change the size of its table. It must then announce the new size using the\r\n  SETTINGS_HEADER_TABLE_SIZE setting, knowing that it will only be effective once\r\n  the SETTINGS frame is acknowledged by its peer. An encoder which observes a table\r\n  size reduction compared to the previously used one MUST announce the new size it\r\n  intends to use via a HPACK Dynamic Table Size Update code carrying a size lower\r\n  than, or equal to the decoder's maximum table size. This also implies that any\r\n  SETTINGS_HEADER_TABLE_SIZE change lower than the last Dynamic Table Size\r\n  Update MUST result in a new valid Dynamic Table Size Update to be emitted by the\r\n  encoder after the setting is acknowledged.\r\n```\r\nThis makes sure that it's safe for an encoder to only process the settings frame once and to send a single DTSU instead of one per SETTINGS frame.\r\n",
           "createdAt": "2021-12-24T08:20:13Z",
           "updatedAt": "2021-12-24T08:20:13Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@wtarreau, I struggled a little with your text, because I think that is what this already says.\r\n\r\nHowever, to address your question about settings changes, I don't think that we do really want multiple settings changes, but that is the protocol we have.  So multiple settings changes are possible and implied by the design of SETTINGS.\r\n\r\nMultiple changes are possible within the same SETTINGS frame, in case you were interested.  The designers of this protocol seemed to love unnecessary complexity.  There are some good reasons, but it's not clear that those reasons are sufficiently strong to justify the headaches they cause.\r\n\r\nI would really like it if implementations could just signal once in the preface, handle the preface from their peer and be done with settings.  That's how HTTP/3 works and while we might have been forced into it there by the complexities of the QUIC integration, it turned out to be a good outcome in my view.  Here, however, we need to deal with the fact that the protocol permits changes.",
+          "createdAt": "2021-12-29T00:46:54Z",
+          "updatedAt": "2021-12-29T00:46:54Z"
         }
       ],
       "reviews": [
