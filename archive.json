@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-30T01:04:24.671028+00:00",
+  "timestamp": "2022-01-02T01:08:47.255701+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -42408,7 +42408,7 @@
       "labels": [],
       "body": "This reverts commit 290e381719b2fefe4e6182d3be288c48e8f5fd7e.\r\nSee #1003 for most of the discussion.\r\n\r\nThe key change here is to address #1004 by only requiring that the change be signaled when the table size is reduced.  When I dug more into this, it's a more disruptive change, so I've made a bunch of additional changes in support of that.\r\n\r\n",
       "createdAt": "2021-12-24T00:06:18Z",
-      "updatedAt": "2021-12-29T00:46:54Z",
+      "updatedAt": "2021-12-30T10:33:20Z",
       "baseRepository": "httpwg/http2-spec",
       "baseRefName": "main",
       "baseRefOid": "290e381719b2fefe4e6182d3be288c48e8f5fd7e",
@@ -42433,6 +42433,41 @@
           "body": "@wtarreau, I struggled a little with your text, because I think that is what this already says.\r\n\r\nHowever, to address your question about settings changes, I don't think that we do really want multiple settings changes, but that is the protocol we have.  So multiple settings changes are possible and implied by the design of SETTINGS.\r\n\r\nMultiple changes are possible within the same SETTINGS frame, in case you were interested.  The designers of this protocol seemed to love unnecessary complexity.  There are some good reasons, but it's not clear that those reasons are sufficiently strong to justify the headaches they cause.\r\n\r\nI would really like it if implementations could just signal once in the preface, handle the preface from their peer and be done with settings.  That's how HTTP/3 works and while we might have been forced into it there by the complexities of the QUIC integration, it turned out to be a good outcome in my view.  Here, however, we need to deal with the fact that the protocol permits changes.",
           "createdAt": "2021-12-29T00:46:54Z",
           "updatedAt": "2021-12-29T00:46:54Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @martinthomson \r\n\r\nI'll have to clone your repo and run the diff here by hand then because I can't figure in this horrible interface how to view the complete set of changes at once resulting from multiple subsequent changes. And it will be easier to reread Kazuho's proposal in context.\r\n\r\nRegarding \"do we want\" I didn't imply that we love this situation, just \"do we want in order to support this interpretation of the protocol\", given that the current text never explicitly states that (as Cory mentioned a while ago, the settings change is acked by a the settings ack) and that even the protocol's original co-author back then already stated that it wasn't meant to be interpreted that way ( https://lists.w3.org/Archives/Public/ietf-http-wg/2015OctDec/0102.html ). Sure, the result is that we have what we have and we have to deal with it in the best way possible. In that spirit I think that Kazuho's proposal tries to be as closed as possible to the current state of deployment by indicating how some implementations behave vs what others expect and suggesting not to play in the gray area there.",
+          "createdAt": "2021-12-30T04:50:54Z",
+          "updatedAt": "2021-12-30T04:50:54Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Herv\u00e9's post there is quite useful, yes.  That supports this overall view.  I've cleaned up the comments on the diff view; let me know if what you see works.  The diff overall is fairly clean (it's mostly additions).",
+          "createdAt": "2021-12-30T10:10:22Z",
+          "updatedAt": "2021-12-30T10:10:22Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I'm just a bit confused, where am I supposed to see the unified diff ? the only way I know is by clicking on each individual commit, which is the solution I find inconvenient :-/  Do I have to add a magic \".patch\" in the URL bar somewhere ?\r\n",
+          "createdAt": "2021-12-30T10:16:49Z",
+          "updatedAt": "2021-12-30T10:16:49Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There's a \"Files changed\" tab toward the top of the page:\r\n![image](https://user-images.githubusercontent.com/67641/147742912-d501c900-94cc-4c4f-b05d-ff16ab0c6e54.png)\r\n\r\nAdding \".patch\" to the URL is a neat hack for finding something you can download, but usually I find that pulling from the branch is nicer to work with.\r\n",
+          "createdAt": "2021-12-30T10:19:40Z",
+          "updatedAt": "2021-12-30T10:21:20Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thanks for pointing that one, I always thought it only contained the original PR's changes, not the latest proposed ones :-)\r\n\r\nI'm seeing this part which remains confusing: \"Any change to the maximum value set by the decoder takes effect when...\" which I'm reading as \"the decode first sets a size, then any change to this size ...\", thus reinforces what most servers currently do. I think Kazuho's proposal to move the sentence about initial values solves this:\r\n\"The dynamic table has a maximum size that is set by a decoder using the SETTINGS_HEADER_TABLE_SIZE setting; see XXX. The encoder at both client and server is initialized with a dynamic table size of 4,096 bytes, the initial value of the SETTINGS_HEADER_TABLE_SIZE setting. Any change by the decoder to the maximum value takes effect...\".\r\n\r\nThis makes it clear that the initially advertised value **is** a change, which currently is the main point of disagreement.\r\n\r\nProabably that we should wait for the end of new year holiday before merging it, so that other implementers for whom this is a change of behavior can have a look.",
+          "createdAt": "2021-12-30T10:33:19Z",
+          "updatedAt": "2021-12-30T10:33:19Z"
         }
       ],
       "reviews": [
