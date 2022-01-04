@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-01-02T01:08:47.255701+00:00",
+  "timestamp": "2022-01-04T01:06:04.308302+00:00",
   "repo": "httpwg/http2-spec",
   "labels": [
     {
@@ -42551,6 +42551,58 @@
           ]
         }
       ]
+    },
+    {
+      "number": 1006,
+      "id": "PR_kwDOAHsHi84wfH1z",
+      "title": "Cleanup as per Lars' mostly automated review",
+      "url": "https://github.com/httpwg/http2-spec/pull/1006",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-01-03T23:12:39Z",
+      "updatedAt": "2022-01-03T23:12:39Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "8bc9af0c5ef2ecead439160fcdee85f4c94dcefb",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "lars-iesg",
+      "headRefOid": "a694ea0de8173def4b3613a769eccccda209682d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 1007,
+      "id": "PR_kwDOAHsHi84wfKjO",
+      "title": "Roman's review",
+      "url": "https://github.com/httpwg/http2-spec/pull/1007",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add a definition for SETTING contents.\r\nAdd a forward reference to the changes section.",
+      "createdAt": "2022-01-03T23:41:05Z",
+      "updatedAt": "2022-01-03T23:41:05Z",
+      "baseRepository": "httpwg/http2-spec",
+      "baseRefName": "main",
+      "baseRefOid": "8bc9af0c5ef2ecead439160fcdee85f4c94dcefb",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "roman-iesg",
+      "headRefOid": "50138460612df38d68b29949739d5920be73a385",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
